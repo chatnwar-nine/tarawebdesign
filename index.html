@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vael — The finance agent that closes your books</title>
+  <meta name="description" content="Vael is an AI agent for finance teams. It reconciles, closes and audits your books. Your team approves. Vael does the rest.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Brand mark, reused everywhere through <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 32 32">
+    <path d="M7.2 7.6 L15.2 24.4" stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none"/>
+    <circle class="mark-dot" cx="23.6" cy="9.4" r="4.6" fill="var(--dot, currentColor)"/>
+  </symbol>
+</svg>
+
+<!-- ───────────── NAV ───────────── -->
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Vael home">
+    <svg class="brand-mark"><use href="#mark"/></svg>
+    <span class="brand-word">vael</span>
+  </a>
+  <nav class="nav-links" aria-label="Main">
+    <a href="#how">Product</a>
+    <a href="#capabilities">Capabilities</a>
+    <a href="#customers">Customers</a>
+    <a href="#security">Security</a>
+    <a href="#pricing">Pricing</a>
+  </nav>
+  <div class="nav-cta">
+    <a class="link-muted" href="#">Log in</a>
+    <a class="btn btn-neon btn-sm" href="#demo">Book a demo</a>
+  </div>
+</header>
+
+<!-- Guided progress rail -->
+<aside class="rail" aria-label="Page sections">
+  <a href="#top" data-rail="top"><i></i><span>Start</span></a>
+  <a href="#how" data-rail="how"><i></i><span>01 How it works</span></a>
+  <a href="#capabilities" data-rail="capabilities"><i></i><span>02 What it does</span></a>
+  <a href="#proof" data-rail="proof"><i></i><span>03 Results</span></a>
+  <a href="#customers" data-rail="customers"><i></i><span>04 Customers</span></a>
+  <a href="#security" data-rail="security"><i></i><span>05 Trust</span></a>
+  <a href="#demo" data-rail="demo"><i></i><span>06 Start</span></a>
+</aside>
+
+<main>
+
+<!-- ───────────── HERO ───────────── -->
+<section class="hero" id="top" data-section="top">
+  <canvas class="hero-field" id="field" aria-hidden="true"></canvas>
+  <div class="hero-glow" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <a class="pill" href="#capabilities">
+      <span class="pill-tag">New</span>
+      Vael Close 2.0 — month-end in 2 days
+      <span aria-hidden="true">→</span>
+    </a>
+
+    <h1 class="hero-title">
+      Your books close<br>
+      <span class="hero-title-dim">while you</span> sleep.
+    </h1>
+
+    <p class="hero-sub">
+      Vael is an AI agent for finance teams. It <b>reconciles, closes and audits</b> your accounts. You approve. Vael does the rest.
+    </p>
+
+    <div class="hero-ctas">
+      <a class="btn btn-neon" href="#demo">Book a demo</a>
+      <a class="btn btn-ghost" href="#console">Try the agent <span aria-hidden="true">↓</span></a>
+    </div>
+
+    <!-- Interactive agent console -->
+    <div class="console" id="console">
+      <div class="console-bar">
+        <div class="console-dots"><i></i><i></i><i></i></div>
+        <div class="console-title">
+          <svg class="console-mark"><use href="#mark"/></svg>
+          Vael Agent <span class="sep">/</span> <span class="muted">Halcyon Freight</span>
+        </div>
+        <div class="console-status"><span class="live-dot"></span> Live sandbox</div>
+      </div>
+
+      <div class="console-body">
+        <div class="console-side">
+          <p class="console-label">Pick a task</p>
+          <button class="task is-active" data-task="reconcile">
+            <span class="task-icon">⇄</span>
+            <span><b>Reconcile October</b><small>Bank feeds vs. ledger</small></span>
+          </button>
+          <button class="task" data-task="collect">
+            <span class="task-icon">↗</span>
+            <span><b>Chase late invoices</b><small>32 clients past due</small></span>
+          </button>
+          <button class="task" data-task="audit">
+            <span class="task-icon">◎</span>
+            <span><b>Explain a spike</b><small>SaaS spend +41%</small></span>
+          </button>
+          <div class="console-side-foot">
+            <span class="kbd">⌘</span><span class="kbd">K</span> or type below
+          </div>
+        </div>
+
+        <div class="console-main">
+          <form class="prompt" id="prompt" autocomplete="off">
+            <span class="prompt-caret">›</span>
+            <input id="prompt-input" type="text" aria-label="Ask Vael" placeholder="Ask Vael to do anything in your books…" value="Reconcile October bank feeds against NetSuite">
+            <button class="btn btn-neon btn-sm" type="submit" id="run-btn">Run <span aria-hidden="true">↵</span></button>
+          </form>
+
+          <ol class="log" id="log" aria-live="polite"></ol>
+
+          <div class="result" id="result" hidden>
+            <div class="result-grid" id="result-grid"></div>
+            <div class="result-actions">
+              <p class="result-note" id="result-note"></p>
+              <button class="btn btn-neon btn-sm" id="approve-btn">Approve</button>
+            </div>
+          </div>
+
+          <div class="console-idle" id="idle">
+            <svg class="idle-mark"><use href="#mark"/></svg>
+            <p>Pick a task or type your own. Vael shows every step.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── LOGOS ───────────── -->
+<section class="logos" aria-label="Customers">
+  <p class="logos-label">Trusted by <b>1,200+ finance teams</b> — from Series A to public.</p>
+  <div class="marquee">
+    <div class="marquee-track">
+      <span class="logo l1">Halcyon<sup>®</sup></span>
+      <span class="logo l2">MERCER&nbsp;&amp;&nbsp;LOWE</span>
+      <span class="logo l3">pallas health</span>
+      <span class="logo l4">◐ Ostrava</span>
+      <span class="logo l5">Fieldnote</span>
+      <span class="logo l6">CORVID/CAPITAL</span>
+      <span class="logo l7">arden bio</span>
+      <span class="logo l8">Tessel▲</span>
+      <span class="logo l1">Halcyon<sup>®</sup></span>
+      <span class="logo l2">MERCER&nbsp;&amp;&nbsp;LOWE</span>
+      <span class="logo l3">pallas health</span>
+      <span class="logo l4">◐ Ostrava</span>
+      <span class="logo l5">Fieldnote</span>
+      <span class="logo l6">CORVID/CAPITAL</span>
+      <span class="logo l7">arden bio</span>
+      <span class="logo l8">Tessel▲</span>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── 01 HOW IT WORKS ───────────── -->
+<section class="how section" id="how" data-section="how">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow"><span class="eyebrow-num">01</span> How Vael works</p>
+      <h2 class="h2">Three steps.<br><span class="dim">Zero new habits.</span></h2>
+      <p class="lead">Vael plugs into the tools you use today. It learns your rules in a week. Then it <b>takes the work off your plate</b>.</p>
+    </header>
+
+    <div class="steps">
+      <div class="steps-list">
+        <article class="step is-active" data-step="0">
+          <span class="step-num">Step 1</span>
+          <h3>Connect your stack</h3>
+          <p>Link your ERP, banks and billing in 10 minutes. Vael reads. It never writes until you say so.</p>
+        </article>
+        <article class="step" data-step="1">
+          <span class="step-num">Step 2</span>
+          <h3>Hand off the task</h3>
+          <p>Ask in plain words. "Close October." Vael plans the work, runs it and shows each move.</p>
+        </article>
+        <article class="step" data-step="2">
+          <span class="step-num">Step 3</span>
+          <h3>Review and approve</h3>
+          <p>You get a clean summary. One click posts it. <b>Every action lands in your audit trail.</b></p>
+        </article>
+      </div>
+
+      <div class="steps-stage">
+        <div class="stage-card" data-stage="0">
+          <div class="stage-head"><span>Connections</span><span class="chip chip-ok">4 live</span></div>
+          <ul class="conn">
+            <li><span class="conn-logo">NS</span><span>NetSuite<small>ERP · General ledger</small></span><em class="ok">Connected</em></li>
+            <li><span class="conn-logo">ST</span><span>Stripe<small>Payouts · Fees</small></span><em class="ok">Connected</em></li>
+            <li><span class="conn-logo">••</span><span>Operating ••4821<small>Bank feed · Daily</small></span><em class="ok">Connected</em></li>
+            <li><span class="conn-logo">SL</span><span>Slack<small>#finance-close</small></span><em class="ok">Connected</em></li>
+            <li class="pending"><span class="conn-logo">RP</span><span>Ramp<small>Cards · Receipts</small></span><em>Syncing<i class="bar"><i></i></i></em></li>
+          </ul>
+        </div>
+
+        <div class="stage-card" data-stage="1">
+          <div class="stage-head"><span>Plan · Close October</span><span class="chip">7 tasks</span></div>
+          <ol class="plan">
+            <li class="done">Lock September period</li>
+            <li class="done">Reconcile 3 bank accounts</li>
+            <li class="done">Match Stripe payouts to invoices</li>
+            <li class="run">Accrue open vendor bills</li>
+            <li>Book deferred revenue</li>
+            <li>Run flux analysis vs. last month</li>
+            <li>Draft close memo for CFO</li>
+          </ol>
+          <div class="plan-foot"><span class="spinner"></span> Vael is on task 4 of 7</div>
+        </div>
+
+        <div class="stage-card" data-stage="2">
+          <div class="stage-head"><span>Ready for review</span><span class="chip chip-neon">Needs you</span></div>
+          <div class="review">
+            <div class="review-row"><span>Journal entries</span><b>14</b></div>
+            <div class="review-row"><span>Total impact</span><b>$182,440.18</b></div>
+            <div class="review-row"><span>Confidence</span><b>99.2%</b></div>
+            <div class="review-row"><span>Flagged for a human</span><b class="neon-text">2</b></div>
+          </div>
+          <div class="review-actions">
+            <button class="btn btn-line btn-sm" type="button">Open details</button>
+            <button class="btn btn-neon btn-sm" type="button">Approve &amp; post</button>
+          </div>
+          <p class="review-log">✓ Logged by Vael · Approved by C. Dubois · 09:14</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── 02 CAPABILITIES ───────────── -->
+<section class="caps section" id="capabilities" data-section="capabilities">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow"><span class="eyebrow-num">02</span> What Vael does</p>
+      <h2 class="h2">One agent.<br><span class="dim">The whole back office.</span></h2>
+      <p class="lead">Vael handles the tasks that eat your month. Your team <b>gets back 60 hours</b> each close.</p>
+    </header>
+
+    <div class="bento">
+      <article class="card card-lg">
+        <div class="card-copy">
+          <span class="card-tag">Reconcile</span>
+          <h3>Match every line. In minutes.</h3>
+          <p>Vael matches bank, card and payout data to your ledger. It <b>clears 97% of lines</b> with no human touch.</p>
+        </div>
+        <div class="match">
+          <div class="match-col">
+            <p class="match-h">Bank</p>
+            <div class="m-row" style="--d:0">Stripe payout <b>$24,180.00</b></div>
+            <div class="m-row" style="--d:1">ACH · Brightwater <b>$8,400.00</b></div>
+            <div class="m-row" style="--d:2">Wire · Kessler AG <b>$61,925.40</b></div>
+            <div class="m-row warn" style="--d:3">Card · AWS <b>$3,212.77</b></div>
+          </div>
+          <svg class="match-lines" viewBox="0 0 80 200" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 26 C40 26 40 26 80 26"/>
+            <path d="M0 74 C40 74 40 122 80 122"/>
+            <path d="M0 122 C40 122 40 74 80 74"/>
+            <path class="warn" d="M0 170 C40 170 40 170 80 170"/>
+          </svg>
+          <div class="match-col">
+            <p class="match-h">Ledger</p>
+            <div class="m-row" style="--d:0">INV-2291 <b>$24,180.00</b></div>
+            <div class="m-row" style="--d:1">INV-2307 <b>$61,925.40</b></div>
+            <div class="m-row" style="--d:2">INV-2302 <b>$8,400.00</b></div>
+            <div class="m-row warn" style="--d:3">No match · <b>review</b></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="card-tag">Close</span>
+        <h3>Month-end in 2 days, not 9.</h3>
+        <div class="close-ring">
+          <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50"/><circle class="ring-val" cx="60" cy="60" r="50"/></svg>
+          <div class="close-ring-label"><b>86%</b><span>Day 2</span></div>
+        </div>
+        <p>Vael runs the checklist, books accruals and writes the memo.</p>
+      </article>
+
+      <article class="card">
+        <span class="card-tag">Collect</span>
+        <h3>Get paid without the awkward emails.</h3>
+        <div class="mail">
+          <p class="mail-to">To: ap@brightwater.co</p>
+          <p>Hi Dana — invoice <b>INV-2288</b> for $12,400 is 14 days late. Here is a pay link. Thanks!</p>
+          <div class="mail-foot"><span class="chip">Draft</span><span class="chip chip-ok">Tone: warm</span></div>
+        </div>
+        <p><b>Cut DSO by 11 days</b> on average.</p>
+      </article>
+
+      <article class="card card-wide">
+        <div class="card-copy">
+          <span class="card-tag">Audit</span>
+          <h3>Catch the leak before the auditor does.</h3>
+          <p>Vael watches every dollar. It flags odd spend and <b>tells you why in one line</b>.</p>
+        </div>
+        <div class="spark">
+          <svg viewBox="0 0 400 140" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="sparkfill" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stop-color="#E6FF2B" stop-opacity=".35"/>
+                <stop offset="1" stop-color="#E6FF2B" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path class="spark-area" d="M0 110 L40 104 L80 108 L120 98 L160 102 L200 96 L240 100 L280 92 L320 40 L360 52 L400 48 L400 140 L0 140 Z"/>
+            <path class="spark-line" d="M0 110 L40 104 L80 108 L120 98 L160 102 L200 96 L240 100 L280 92 L320 40 L360 52 L400 48"/>
+            <circle class="spark-dot" cx="320" cy="40" r="5"/>
+          </svg>
+          <div class="spark-flag">
+            <b>SaaS spend +41%</b>
+            <span>3 duplicate seats on Figma, Notion and Linear. Save <b>$2,940/mo</b>.</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── 03 PROOF ───────────── -->
+<section class="proof section" id="proof" data-section="proof">
+  <canvas class="proof-art" id="orb" aria-hidden="true"></canvas>
+  <div class="container proof-inner">
+    <p class="eyebrow eyebrow-dark"><span class="eyebrow-num">03</span> Results</p>
+    <h2 class="h2 proof-title">Teams that run on Vael<br><span class="dim">close faster and sleep better.</span></h2>
+
+    <div class="stats">
+      <div class="stat">
+        <p class="stat-val"><span data-count="78">0</span>%</p>
+        <p class="stat-lbl">Faster month-end close</p>
+      </div>
+      <div class="stat">
+        <p class="stat-val"><span data-count="97">0</span>%</p>
+        <p class="stat-lbl">Lines matched with no human touch</p>
+      </div>
+      <div class="stat">
+        <p class="stat-val">$<span data-count="38">0</span>B</p>
+        <p class="stat-lbl">Transactions reconciled in 2026</p>
+      </div>
+      <div class="stat">
+        <p class="stat-val"><span data-count="0" data-final="0">0</span></p>
+        <p class="stat-lbl">Entries posted without approval. Ever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── 04 CUSTOMERS ───────────── -->
+<section class="customers section" id="customers" data-section="customers">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow"><span class="eyebrow-num">04</span> Customers</p>
+      <h2 class="h2">Finance leaders trust Vael<br><span class="dim">with the numbers that matter.</span></h2>
+    </header>
+
+    <div class="story">
+      <div class="story-visual" aria-hidden="true">
+        <div class="story-img">
+          <div class="story-glass">
+            <p class="sg-label">Halcyon Freight · Close time</p>
+            <div class="sg-bars">
+              <div><i style="--h:100%"></i><span>Q1</span></div>
+              <div><i style="--h:72%"></i><span>Q2</span></div>
+              <div><i style="--h:38%"></i><span>Q3</span></div>
+              <div class="hl"><i style="--h:22%"></i><span>Q4</span></div>
+            </div>
+            <p class="sg-foot"><b>9.2 → 2.1 days</b></p>
+          </div>
+        </div>
+      </div>
+      <figure class="story-quote">
+        <span class="story-logo">Halcyon<sup>®</sup></span>
+        <blockquote>“We closed Q3 in two days. My team spent the rest of the week on pricing — the work that moves the business.”</blockquote>
+        <figcaption>
+          <span class="avatar" style="--a:#1d1d1a;--b:#E6FF2B">CD</span>
+          <span><b>Claire Dubois</b><small>CFO, Halcyon Freight · 420 employees</small></span>
+        </figcaption>
+        <div class="story-stats">
+          <div><b>−77%</b><span>close time</span></div>
+          <div><b>$410k</b><span>saved per year</span></div>
+          <div><b>6 wks</b><span>to full rollout</span></div>
+        </div>
+      </figure>
+    </div>
+
+    <div class="quotes">
+      <figure class="quote">
+        <blockquote>“Vael found $86k in double-billed vendors in its first week. It paid for itself before the pilot ended.”</blockquote>
+        <figcaption><span class="avatar" style="--a:#E6FF2B;--b:#0A0A0A">MO</span><span><b>Marcus Okafor</b><small>Controller, Pallas Health</small></span></figcaption>
+      </figure>
+      <figure class="quote">
+        <blockquote>“Our auditors asked for the trail. We sent one link. Every step, every approval, every source. Done.”</blockquote>
+        <figcaption><span class="avatar" style="--a:#2a2a26;--b:#fff">SL</span><span><b>Sofia Lindqvist</b><small>VP Finance, Ostrava</small></span></figcaption>
+      </figure>
+      <figure class="quote">
+        <blockquote>“I was the skeptic. Now I can't picture a close without it. It works like my best senior accountant.”</blockquote>
+        <figcaption><span class="avatar" style="--a:#d9d9d2;--b:#0A0A0A">JR</span><span><b>James Reyes</b><small>Head of Accounting, Tessel</small></span></figcaption>
+      </figure>
+    </div>
+
+    <div class="ratings">
+      <div><b>4.9</b><span>★★★★★</span><small>G2 · 310 reviews</small></div>
+      <div><b>#1</b><span>Close Automation</span><small>G2 Fall 2026</small></div>
+      <div><b>98%</b><span>Renewal rate</span><small>Net, trailing 12 mo</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── 05 SECURITY ───────────── -->
+<section class="security section" id="security" data-section="security">
+  <div class="container sec-grid">
+    <div>
+      <p class="eyebrow"><span class="eyebrow-num">05</span> Trust &amp; control</p>
+      <h2 class="h2">You stay in charge.<br><span class="dim">Always.</span></h2>
+      <p class="lead">Vael never moves money. It <b>never posts without your approval</b>. Every step leaves a record your auditor can read.</p>
+
+      <ul class="trust">
+        <li><span class="trust-ico">◇</span><div><b>SOC 2 Type II &amp; ISO 27001</b><small>Audited every year by a third party.</small></div></li>
+        <li><span class="trust-ico">◇</span><div><b>Your data trains nothing</b><small>We never use your books to train models.</small></div></li>
+        <li><span class="trust-ico">◇</span><div><b>Role-based approvals</b><small>Set who signs off, by amount and account.</small></div></li>
+        <li><span class="trust-ico">◇</span><div><b>EU or US data residency</b><small>GDPR ready. Pick where your data lives.</small></div></li>
+      </ul>
+    </div>
+
+    <div class="audit">
+      <div class="audit-head"><span>Audit trail · JE-10482</span><span class="chip chip-ok">Immutable</span></div>
+      <ol class="audit-list">
+        <li><time>09:02:11</time><span><b>Vael</b> read 412 lines from NetSuite</span></li>
+        <li><time>09:02:14</time><span><b>Vael</b> matched to Stripe payout po_8Hx…</span></li>
+        <li><time>09:02:15</time><span><b>Vael</b> drafted accrual · $12,400.00</span></li>
+        <li><time>09:02:15</time><span><b>Vael</b> cited source: contract §4.2</span></li>
+        <li class="hl"><time>09:14:40</time><span><b>C. Dubois</b> approved</span></li>
+        <li><time>09:14:41</time><span><b>Vael</b> posted to period Oct-26</span></li>
+      </ol>
+      <div class="badges">
+        <span class="badge">SOC 2</span><span class="badge">ISO 27001</span><span class="badge">GDPR</span><span class="badge">AES-256</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── INTEGRATIONS + PRICING ───────────── -->
+<section class="stack section" id="pricing">
+  <div class="container">
+    <header class="section-head center">
+      <p class="eyebrow">Works with your stack</p>
+      <h2 class="h2">40+ native integrations.<br><span class="dim">Live in a day.</span></h2>
+    </header>
+    <div class="integrations">
+      <span>NetSuite</span><span>QuickBooks</span><span>Xero</span><span>Sage Intacct</span><span>Stripe</span><span>Ramp</span>
+      <span>Brex</span><span>Bill.com</span><span>Plaid</span><span>Salesforce</span><span>HubSpot</span><span>Slack</span>
+      <span>Microsoft Teams</span><span>Google Drive</span><span>Snowflake</span><span class="more">+25 more</span>
+    </div>
+
+    <div class="plans">
+      <div class="plan-card">
+        <p class="plan-name">Team</p>
+        <p class="plan-price">$1,200<small>/mo</small></p>
+        <p class="plan-desc">For lean teams up to $50M revenue.</p>
+        <ul><li>Reconcile &amp; Collect</li><li>5 integrations</li><li>Email support</li></ul>
+        <a class="btn btn-line" href="#demo">Start a pilot</a>
+      </div>
+      <div class="plan-card plan-hl">
+        <p class="plan-name">Scale <span class="chip chip-neon">Most picked</span></p>
+        <p class="plan-price">$3,800<small>/mo</small></p>
+        <p class="plan-desc">For growing teams that close every month.</p>
+        <ul><li>All four agents</li><li>Unlimited integrations</li><li>Dedicated close expert</li></ul>
+        <a class="btn btn-neon" href="#demo">Book a demo</a>
+      </div>
+      <div class="plan-card">
+        <p class="plan-name">Enterprise</p>
+        <p class="plan-price">Custom</p>
+        <p class="plan-desc">For multi-entity and public companies.</p>
+        <ul><li>SOX controls pack</li><li>SSO, SCIM &amp; data residency</li><li>99.9% uptime SLA</li></ul>
+        <a class="btn btn-line" href="#demo">Talk to sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── 06 CTA ───────────── -->
+<section class="cta" id="demo" data-section="demo">
+  <canvas class="cta-field" id="cta-field" aria-hidden="true"></canvas>
+  <div class="cta-inner">
+    <p class="eyebrow eyebrow-dark"><span class="eyebrow-num">06</span> Get started</p>
+    <h2 class="cta-title">Close your next month<br>with Vael.</h2>
+    <p class="cta-sub">Book a 30-minute demo. We run Vael on <b>your own data</b>. You see results before you sign.</p>
+    <form class="cta-form" onsubmit="event.preventDefault(); this.classList.add('sent');">
+      <input type="email" required placeholder="you@company.com" aria-label="Work email">
+      <button class="btn btn-neon" type="submit"><span class="send-txt">Book a demo</span><span class="sent-txt">✓ We'll be in touch</span></button>
+    </form>
+    <p class="cta-fine">Free 30-day pilot · No card · Cancel any time</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ───────────── FOOTER ───────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="brand" href="#top"><svg class="brand-mark"><use href="#mark"/></svg><span class="brand-word">vael</span></a>
+        <p>The finance agent that closes your books.</p>
+        <p class="status"><span class="live-dot"></span> All systems normal</p>
+      </div>
+      <div class="foot-cols">
+        <div><p>Product</p><a href="#">Reconcile</a><a href="#">Close</a><a href="#">Collect</a><a href="#">Audit</a></div>
+        <div><p>Company</p><a href="#">About</a><a href="#">Careers</a><a href="#">Customers</a><a href="#">Press</a></div>
+        <div><p>Resources</p><a href="#">Docs</a><a href="#">Trust center</a><a href="#">Close playbook</a><a href="#">Changelog</a></div>
+        <div><p>Legal</p><a href="#">Terms</a><a href="#">Privacy</a><a href="#">DPA</a><a href="#">Security</a></div>
+      </div>
+    </div>
+    <div class="foot-word" aria-hidden="true">vael</div>
+    <div class="foot-bottom">
+      <span>© 2026 Vael Labs, Inc.</span>
+      <span class="concept-note">Design concept. Vael, its customers, people and figures are fictional.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
