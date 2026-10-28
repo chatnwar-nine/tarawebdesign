@@ -2,6 +2,8 @@
 
 Design concept for a fictional AI finance agent. Open `index.html` in a browser. No build step.
 
+Brand guidelines live in `brand.html` (logo, character, color, type, voice, imagery, UI, applications, assets).
+
 ## Brand
 - **Name:** Vael — short, soft, ownable.
 - **Mark:** one stroke + one point. The stroke is the work the agent does. The point is the decision the human approves. It reads as a "V".

@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vael Brand Guidelines</title>
+  <meta name="description" content="How Vael looks, moves and speaks. Logo, character, color, type, voice, imagery and UI.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="brand.css">
+</head>
+<body class="bg">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 32 32">
+    <path d="M7.2 7.6 L15.2 24.4" stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none"/>
+    <circle cx="23.6" cy="9.4" r="4.6" fill="var(--dot, currentColor)"/>
+  </symbol>
+</svg>
+
+<!-- Top bar -->
+<header class="bg-bar">
+  <a class="brand" href="index.html"><svg class="brand-mark"><use href="#mark"/></svg><span class="brand-word">vael</span></a>
+  <nav class="bg-toc" aria-label="Chapters">
+    <a href="#foundation">Foundation</a>
+    <a href="#logo">Logo</a>
+    <a href="#character">Character</a>
+    <a href="#color">Color</a>
+    <a href="#type">Type</a>
+    <a href="#voice">Voice</a>
+    <a href="#imagery">Imagery</a>
+    <a href="#ui">UI</a>
+    <a href="#applications">Applications</a>
+    <a href="#assets">Assets</a>
+  </nav>
+</header>
+
+<!-- COVER -->
+<section class="bg-cover">
+  <div class="vael vael-xl" data-state="idle" aria-hidden="true">
+    <span class="vael-ring"></span><span class="vael-body"></span><span class="vael-eyes"><i></i><i></i></span>
+  </div>
+  <h1>Vael<br><span>Brand Guidelines</span></h1>
+  <p>How Vael looks, moves and speaks. Version 1.0 — October 2026.</p>
+</section>
+
+<!-- 01 FOUNDATION -->
+<section class="bg-ch" id="foundation">
+  <div class="bg-head">
+    <span class="bg-num">01</span>
+    <h2>Foundation</h2>
+    <p>Everything below follows from one idea. <b>Vael does the work. You keep control.</b></p>
+  </div>
+
+  <div class="bg-grid-2">
+    <div class="bg-card bg-card-dark">
+      <h3>Mission</h3>
+      <p class="bg-big">Give finance teams their month back.</p>
+    </div>
+    <div class="bg-card">
+      <h3>Positioning</h3>
+      <p class="bg-big">For finance teams drowning in month-end, Vael is the AI agent that does the work and waits for your approval.</p>
+    </div>
+  </div>
+
+  <div class="bg-grid-3">
+    <div class="bg-card"><h3>Promise</h3><p>Close in 2 days, not 9. Nothing posts without a human yes.</p></div>
+    <div class="bg-card"><h3>Audience</h3><p>CFOs, controllers and accountants at companies from $10M to $1B in revenue.</p></div>
+    <div class="bg-card"><h3>Proof</h3><p>Every claim ships with a number: 97% matched, 78% faster, 0 unapproved entries.</p></div>
+  </div>
+
+  <h3 class="bg-sub">Personality</h3>
+  <div class="bg-traits">
+    <div><b>Calm</b><span>Never rushed. Never loud.</span><em>Not: hyped, urgent, salesy</em></div>
+    <div><b>Exact</b><span>Numbers over adjectives.</span><em>Not: vague, fluffy, approximate</em></div>
+    <div><b>Accountable</b><span>Shows every step. Asks before acting.</span><em>Not: magic, black box</em></div>
+    <div><b>Warm</b><span>A colleague, not a machine.</span><em>Not: cute, jokey, childish</em></div>
+  </div>
+</section>
+
+<!-- 02 LOGO -->
+<section class="bg-ch" id="logo">
+  <div class="bg-head">
+    <span class="bg-num">02</span>
+    <h2>Logo</h2>
+    <p>One stroke and one point. <b>The stroke is the work. The point is your decision.</b> Together they read as a V.</p>
+  </div>
+
+  <div class="bg-grid-2">
+    <div class="bg-card bg-center bg-tall">
+      <svg class="bg-construct" viewBox="-4 -4 40 40" aria-label="Mark construction on a 32-unit grid">
+        <defs>
+          <pattern id="g" width="1" height="1" patternUnits="userSpaceOnUse"><path d="M1 0H0V1" fill="none" stroke="rgba(10,10,10,.07)" stroke-width=".04"/></pattern>
+        </defs>
+        <rect x="0" y="0" width="32" height="32" fill="url(#g)"/>
+        <rect x="0" y="0" width="32" height="32" fill="none" stroke="rgba(10,10,10,.25)" stroke-width=".08"/>
+        <path d="M7.2 7.6 L15.2 24.4" stroke="#0A0A0A" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="23.6" cy="9.4" r="4.6" fill="#0A0A0A"/>
+        <g fill="none" stroke="#E6FF2B" stroke-width=".14">
+          <path d="M7.2 7.6 L15.2 24.4"/>
+          <circle cx="7.2" cy="7.6" r="3"/><circle cx="15.2" cy="24.4" r="3"/>
+          <circle cx="23.6" cy="9.4" r="4.6"/>
+          <path d="M23.6 9.4 L7.2 7.6" stroke-dasharray=".5 .4"/>
+        </g>
+        <g fill="#E6FF2B"><circle cx="7.2" cy="7.6" r=".35"/><circle cx="15.2" cy="24.4" r=".35"/><circle cx="23.6" cy="9.4" r=".35"/></g>
+      </svg>
+    </div>
+    <div class="bg-specs">
+      <h3>Construction</h3>
+      <dl>
+        <div><dt>Grid</dt><dd>32 × 32 units</dd></div>
+        <div><dt>Stroke</dt><dd>6 units, round caps</dd></div>
+        <div><dt>Stroke axis</dt><dd>(7.2, 7.6) → (15.2, 24.4), 64.5°</dd></div>
+        <div><dt>Point</dt><dd>Ø 9.2 units, centre (23.6, 9.4)</dd></div>
+        <div><dt>Point colour</dt><dd>Neon on dark. Same as stroke on light.</dd></div>
+      </dl>
+      <h3>Wordmark</h3>
+      <dl>
+        <div><dt>Type</dt><dd>Funnel Display SemiBold, lowercase</dd></div>
+        <div><dt>Tracking</dt><dd>−6%</dd></div>
+        <div><dt>Lockup gap</dt><dd>0.35 × mark height</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <h3 class="bg-sub">Versions</h3>
+  <div class="bg-grid-3">
+    <div class="bg-logo bg-on-ink"><span class="brand"><svg class="brand-mark" style="--dot:var(--neon)"><use href="#mark"/></svg><span class="brand-word">vael</span></span><small>Primary · on Ink</small></div>
+    <div class="bg-logo bg-on-paper"><span class="brand"><svg class="brand-mark" style="--dot:var(--ink)"><use href="#mark"/></svg><span class="brand-word">vael</span></span><small>On Paper</small></div>
+    <div class="bg-logo bg-on-neon"><span class="brand"><svg class="brand-mark" style="--dot:var(--ink)"><use href="#mark"/></svg><span class="brand-word">vael</span></span><small>On Neon</small></div>
+  </div>
+
+  <div class="bg-grid-3">
+    <div class="bg-card">
+      <h3>Clear space</h3>
+      <div class="bg-clear"><span class="brand"><svg class="brand-mark" style="--dot:var(--ink)"><use href="#mark"/></svg><span class="brand-word">vael</span></span></div>
+      <p>Keep one point-width (●) free on every side.</p>
+    </div>
+    <div class="bg-card">
+      <h3>Minimum size</h3>
+      <div class="bg-min">
+        <div><svg style="width:16px;height:16px"><use href="#mark"/></svg><small>Mark 16 px</small></div>
+        <div><span class="brand bg-brand-sm"><svg class="brand-mark"><use href="#mark"/></svg><span class="brand-word">vael</span></span><small>Lockup 64 px wide</small></div>
+      </div>
+      <p>Below this, the point merges with the stroke.</p>
+    </div>
+    <div class="bg-card">
+      <h3>Mark only</h3>
+      <div class="bg-min"><div class="bg-appicon"><svg><use href="#mark"/></svg></div></div>
+      <p>For app icons, favicons and avatars. Always on Ink with a Neon point.</p>
+    </div>
+  </div>
+
+  <h3 class="bg-sub">Don't</h3>
+  <div class="bg-donts">
+    <div><span class="brand bg-dont" style="transform:scaleX(1.5)"><svg class="brand-mark" style="--dot:var(--ink)"><use href="#mark"/></svg><span class="brand-word">vael</span></span><p>Stretch or squash</p></div>
+    <div><span class="brand bg-dont" style="transform:rotate(-14deg)"><svg class="brand-mark" style="--dot:var(--ink)"><use href="#mark"/></svg><span class="brand-word">vael</span></span><p>Rotate</p></div>
+    <div><span class="brand bg-dont" style="color:#3b6cff"><svg class="brand-mark" style="--dot:#ff4d6d"><use href="#mark"/></svg><span class="brand-word">vael</span></span><p>Use off-palette colours</p></div>
+    <div><span class="brand bg-dont" style="filter:drop-shadow(3px 4px 0 #E6FF2B)"><svg class="brand-mark" style="--dot:var(--ink)"><use href="#mark"/></svg><span class="brand-word">vael</span></span><p>Add effects or shadows</p></div>
+    <div><span class="brand bg-dont"><svg class="brand-mark" style="--dot:var(--ink)"><use href="#mark"/></svg><span class="brand-word" style="font-family:Georgia,serif;letter-spacing:0">Vael</span></span><p>Change the wordmark</p></div>
+    <div class="bg-dont-neon"><span class="brand bg-dont" style="color:var(--neon)"><svg class="brand-mark" style="--dot:var(--neon)"><use href="#mark"/></svg><span class="brand-word">vael</span></span><p>Put Neon on Paper</p></div>
+  </div>
+</section>
+
+<!-- 03 CHARACTER -->
+<section class="bg-ch" id="character">
+  <div class="bg-head">
+    <span class="bg-num">03</span>
+    <h2>The character</h2>
+    <p>Vael has a face so people know <b>an agent is at work</b>. The face shows what Vael is doing. It never decorates.</p>
+  </div>
+
+  <div class="bg-grid-2">
+    <div class="bg-card bg-card-dark bg-center bg-tall">
+      <div class="bg-anatomy">
+        <div class="vael bg-face-xxl" data-state="idle" aria-hidden="true"><span class="vael-body"></span><span class="vael-eyes"><i></i><i></i></span></div>
+        <span class="bg-pin" style="--x:74%;--y:14%">Eye · 10% × 22% of Ø</span>
+        <span class="bg-pin" style="--x:50%;--y:84%">Gap · 16% of Ø</span>
+        <span class="bg-pin" style="--x:18%;--y:6%">Highlight at 34% / 28%</span>
+      </div>
+    </div>
+    <div class="bg-specs">
+      <h3>Anatomy</h3>
+      <dl>
+        <div><dt>Body</dt><dd>Neon sphere. Radial shade to #A9C200 at the edge.</dd></div>
+        <div><dt>Eyes</dt><dd>Two Ink pills. Centre at 46% height.</dd></div>
+        <div><dt>Mouth</dt><dd>None. Ever. Eyes carry the emotion.</dd></div>
+        <div><dt>Glow</dt><dd>Neon at 35%, blur half the diameter. Large sizes only.</dd></div>
+        <div><dt>Sizes</dt><dd>24 · 30 · 72 · 96 · 128 px</dd></div>
+      </dl>
+      <h3>Behaviour</h3>
+      <dl>
+        <div><dt>Gaze</dt><dd>Eyes follow the cursor. Max shift 14% × 10% of Ø.</dd></div>
+        <div><dt>Blink</dt><dd>130 ms, every 2.5 – 6.5 s, random.</dd></div>
+        <div><dt>Breath</dt><dd>Scale 1 → 1.035, 4.5 s loop.</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <h3 class="bg-sub">States</h3>
+  <div class="bg-states">
+    <div><div class="vael vael-lg" data-state="idle" aria-hidden="true"><span class="vael-ring"></span><span class="vael-body"></span><span class="vael-eyes"><i></i><i></i></span></div><b>Ready</b><p>Waiting for a task. Looks at you.</p></div>
+    <div><div class="vael vael-lg" data-state="thinking" aria-hidden="true"><span class="vael-ring"></span><span class="vael-body"></span><span class="vael-eyes"><i></i><i></i></span></div><b>Thinking</b><p>Eyes look up and away. Planning.</p></div>
+    <div><div class="vael vael-lg" data-state="working" aria-hidden="true"><span class="vael-ring"></span><span class="vael-body"></span><span class="vael-eyes"><i></i><i></i></span></div><b>Working</b><p>Eyes narrow. A point orbits.</p></div>
+    <div><div class="vael vael-lg" data-state="done" aria-hidden="true"><span class="vael-ring"></span><span class="vael-body"></span><span class="vael-eyes"><i></i><i></i></span></div><b>Done</b><p>Eyes smile. One small hop.</p></div>
+  </div>
+
+  <div class="bg-grid-2 bg-rules">
+    <div class="bg-card"><h3>Do</h3><ul class="bg-do"><li>Show the face next to what Vael says or does.</li><li>Match the state to the real task status.</li><li>Use one face per card or screen.</li></ul></div>
+    <div class="bg-card"><h3>Don't</h3><ul class="bg-dont-list"><li>Add a mouth, arms, hats or props.</li><li>Recolour the body.</li><li>Use the face as decoration or a mascot sticker.</li><li>Show it below 24 px.</li></ul></div>
+  </div>
+</section>
+
+<!-- 04 COLOR -->
+<section class="bg-ch" id="color">
+  <div class="bg-head">
+    <span class="bg-num">04</span>
+    <h2>Color</h2>
+    <p>Black, white and one neon. <b>Neon marks action and proof. Nothing else.</b></p>
+  </div>
+
+  <div class="bg-swatches">
+    <div class="sw sw-ink"><b>Ink</b><span>#0A0A0A</span><span>RGB 10 10 10</span><span>CMYK 0 0 0 96</span></div>
+    <div class="sw sw-paper"><b>Paper</b><span>#F3F3EE</span><span>RGB 243 243 238</span><span>CMYK 0 0 2 5</span></div>
+    <div class="sw sw-neon"><b>Neon</b><span>#E6FF2B</span><span>RGB 230 255 43</span><span>CMYK 10 0 83 0</span></div>
+  </div>
+  <div class="bg-swatches bg-swatches-sm">
+    <div class="sw" style="background:#141412;color:#fff"><b>Ink 2</b><span>#141412</span></div>
+    <div class="sw" style="background:#1C1C19;color:#fff"><b>Ink 3</b><span>#1C1C19</span></div>
+    <div class="sw" style="background:#5C5C55;color:#fff"><b>Grey 700</b><span>#5C5C55</span></div>
+    <div class="sw" style="background:#85857B;color:#fff"><b>Grey 500</b><span>#85857B</span></div>
+    <div class="sw" style="background:#EAEAE3"><b>Paper 2</b><span>#EAEAE3</span></div>
+    <div class="sw" style="background:#fff"><b>White</b><span>#FFFFFF</span></div>
+  </div>
+
+  <div class="bg-grid-2">
+    <div class="bg-card">
+      <h3>Proportion</h3>
+      <div class="bg-ratio"><i style="flex:60;background:var(--ink)"></i><i style="flex:30;background:#EAEAE3"></i><i style="flex:10;background:var(--neon)"></i></div>
+      <p>60% Ink or Paper. 30% greys and white. 10% Neon at most.</p>
+    </div>
+    <div class="bg-card">
+      <h3>Contrast</h3>
+      <table class="bg-table">
+        <tr><td><span class="pair" style="background:#0A0A0A;color:#E6FF2B">Aa</span>Neon on Ink</td><td>17.6 : 1</td><td class="ok">AAA</td></tr>
+        <tr><td><span class="pair" style="background:#F3F3EE;color:#0A0A0A">Aa</span>Ink on Paper</td><td>17.8 : 1</td><td class="ok">AAA</td></tr>
+        <tr><td><span class="pair" style="background:#F3F3EE;color:#5C5C55">Aa</span>Grey 700 on Paper</td><td>6.1 : 1</td><td class="ok">AA</td></tr>
+        <tr><td><span class="pair" style="background:#F3F3EE;color:#85857B">Aa</span>Grey 500 on Paper</td><td>3.4 : 1</td><td class="warn">Large only</td></tr>
+        <tr><td><span class="pair" style="background:#F3F3EE;color:#E6FF2B">Aa</span>Neon on Paper</td><td>1.0 : 1</td><td class="no">Never</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3 class="bg-sub">Signals</h3>
+  <div class="bg-signals">
+    <span style="background:#3CCF7A">Success · #3CCF7A</span>
+    <span style="background:#FFB02E">Needs review · #FFB02E</span>
+    <span style="background:#FF4D4D;color:#fff">Error · #FF4D4D</span>
+  </div>
+  <p class="bg-note">Use signals only for status inside the product. Never in marketing art.</p>
+</section>
+
+<!-- 05 TYPE -->
+<section class="bg-ch" id="type">
+  <div class="bg-head">
+    <span class="bg-num">05</span>
+    <h2>Typography</h2>
+    <p>Two families. <b>Funnel Display speaks. Geist explains.</b></p>
+  </div>
+
+  <div class="bg-grid-2">
+    <div class="bg-card bg-card-dark bg-type-hero">
+      <p class="bg-aa" style="font-family:var(--f-display)">Aa</p>
+      <div><b>Funnel Display</b><span>Headlines, numbers, the wordmark. Weights 400 · 500 · 600.</span></div>
+    </div>
+    <div class="bg-card bg-type-hero">
+      <p class="bg-aa" style="font-family:var(--f-body);letter-spacing:-.03em">Aa</p>
+      <div><b>Geist</b><span>Body, UI, buttons, data. Weights 400 · 500 · 600.</span></div>
+    </div>
+  </div>
+
+  <h3 class="bg-sub">Scale</h3>
+  <div class="bg-scale">
+    <div><span class="bg-scale-meta">Display · 112 / 0.92 · −5.5%</span><p style="font:500 clamp(48px,8vw,112px)/.92 var(--f-display);letter-spacing:-.055em">Close in 2 days.</p></div>
+    <div><span class="bg-scale-meta">H1 · 68 / 0.98 · −4.5%</span><p style="font:500 clamp(36px,5vw,68px)/.98 var(--f-display);letter-spacing:-.045em">One agent. <span class="dim">The whole back office.</span></p></div>
+    <div><span class="bg-scale-meta">H2 · 44 / 1.0 · −4.5%</span><p style="font:500 clamp(30px,3.4vw,44px)/1 var(--f-display);letter-spacing:-.045em">Hand off the task</p></div>
+    <div><span class="bg-scale-meta">H3 · 30 / 1.02 · −4.5%</span><p style="font:500 30px/1.02 var(--f-display);letter-spacing:-.045em">Get paid on time.</p></div>
+    <div><span class="bg-scale-meta">Lead · Geist 19 / 1.55</span><p style="font:400 19px/1.55 var(--f-body);color:var(--text-2)">Vael plugs into the tools you use today. It <b style="color:var(--ink)">takes the work off your plate</b>.</p></div>
+    <div><span class="bg-scale-meta">Body · Geist 16 / 1.55</span><p style="font:400 16px/1.55 var(--f-body)">I matched 4,690 lines on amount, date and memo.</p></div>
+    <div><span class="bg-scale-meta">Small · Geist 14 / 1.5</span><p style="font:400 14px/1.5 var(--f-body);color:var(--text-2)">Every plan starts with a free 30-day pilot.</p></div>
+  </div>
+
+  <div class="bg-grid-3">
+    <div class="bg-card"><h3>Two-tone headline</h3><p>Our signature. Line one in Ink states the fact. Line two in Grey 500 adds the feeling.</p></div>
+    <div class="bg-card"><h3>Bold the benefit</h3><p>In body copy, bold the one phrase that sells. One per paragraph.</p></div>
+    <div class="bg-card"><h3>Never</h3><p>All caps, italics, letter-spaced labels or more than two weights in one block.</p></div>
+  </div>
+</section>
+
+<!-- 06 VOICE -->
+<section class="bg-ch" id="voice">
+  <div class="bg-head">
+    <span class="bg-num">06</span>
+    <h2>Voice</h2>
+    <p>Write like a senior accountant who respects your time. <b>Short. Plain. Exact.</b></p>
+  </div>
+
+  <div class="bg-grid-3">
+    <div class="bg-card"><h3>Grade 5–7</h3><p>Short words. Short sentences. If a 12-year-old can't read it, rewrite it.</p></div>
+    <div class="bg-card"><h3>Active voice</h3><p>"Vael matched 4,690 lines." Not "4,690 lines were matched."</p></div>
+    <div class="bg-card"><h3>No fluff</h3><p>Cut adverbs and qualifiers. Swap adjectives for numbers.</p></div>
+  </div>
+
+  <h3 class="bg-sub">Who speaks</h3>
+  <div class="bg-grid-2">
+    <div class="bg-card bg-card-dark">
+      <div class="bg-speaker"><div class="vael vael-sm" data-state="done" aria-hidden="true"><span class="vael-body"></span><span class="vael-eyes"><i></i><i></i></span></div><b>Vael · in the product</b></div>
+      <p class="bg-quote">"I drafted 6 journal entries. Nothing posts until you approve."</p>
+      <p>First person. Says what it did, then what it needs from you.</p>
+    </div>
+    <div class="bg-card">
+      <div class="bg-speaker"><svg class="brand-mark" style="--dot:var(--ink)"><use href="#mark"/></svg><b>The company · in marketing</b></div>
+      <p class="bg-quote">"Your books close while you sleep."</p>
+      <p>Talks to "you". Leads with the outcome, then the proof.</p>
+    </div>
+  </div>
+
+  <h3 class="bg-sub">Rewrite it</h3>
+  <table class="bg-table bg-rewrite">
+    <tr><th>Instead of</th><th>Write</th></tr>
+    <tr><td>Leverage AI-powered automation to streamline your financial close process.</td><td>Close your books in 2 days, not 9.</td></tr>
+    <tr><td>Our cutting-edge platform seamlessly integrates with your existing tools.</td><td>Vael works with NetSuite, Stripe and 40 more. Live in a day.</td></tr>
+    <tr><td>Transactions have been successfully reconciled.</td><td>I matched 4,690 lines. 122 need a look.</td></tr>
+    <tr><td>Revolutionary, game-changing, next-gen.</td><td>A number.</td></tr>
+  </table>
+</section>
+
+<!-- 07 IMAGERY -->
+<section class="bg-ch" id="imagery">
+  <div class="bg-head">
+    <span class="bg-num">07</span>
+    <h2>Imagery</h2>
+    <p>No stock photos. <b>We show the product, the data and the light.</b></p>
+  </div>
+
+  <div class="bg-imgs">
+    <figure class="bg-img bg-img-field"><canvas id="bg-field" aria-hidden="true"></canvas><figcaption><b>Dot field</b>A grid of points that reacts to the cursor. Hero and closing sections.</figcaption></figure>
+    <figure class="bg-img bg-img-orb"><canvas id="bg-orb" aria-hidden="true"></canvas><figcaption><b>Dithered orb</b>Ordered dither, Neon only at the brightest point. Results and data stories.</figcaption></figure>
+    <figure class="bg-img bg-img-glass"><div class="bg-glass"><div class="sg-bars"><i style="--h:100%"></i><i style="--h:72%"></i><i style="--h:38%"></i><i class="hl" style="--h:22%"></i></div></div><figcaption><b>Glass on light</b>Frosted cards over a Neon glow and film grain. Customer stories.</figcaption></figure>
+    <figure class="bg-img bg-img-ui"><div class="bg-ui-card"><div class="vael vael-xs" data-state="done" aria-hidden="true"><span class="vael-body"></span><span class="vael-eyes"><i></i><i></i></span></div><p><b>Brightwater paid</b> $12,400</p></div><figcaption><b>Product moments</b>Real UI, one idea per frame, real-looking numbers.</figcaption></figure>
+  </div>
+
+  <div class="bg-grid-2 bg-rules">
+    <div class="bg-card"><h3>Do</h3><ul class="bg-do"><li>Use one light source, always Neon.</li><li>Keep generous dark space around art.</li><li>Use precise numbers in UI shots: $12,400, not $XX.</li></ul></div>
+    <div class="bg-card"><h3>Don't</h3><ul class="bg-dont-list"><li>Robots, brains, circuit boards or glowing blue.</li><li>People pointing at screens.</li><li>3D blobs in many colours.</li></ul></div>
+  </div>
+</section>
+
+<!-- 08 UI -->
+<section class="bg-ch" id="ui">
+  <div class="bg-head">
+    <span class="bg-num">08</span>
+    <h2>Interface</h2>
+    <p>Soft shapes, no lines. <b>Space and surface do the separating.</b></p>
+  </div>
+
+  <div class="bg-grid-2">
+    <div class="bg-card">
+      <h3>Buttons</h3>
+      <div class="bg-row"><a class="btn btn-neon" href="#ui">Book a demo</a><a class="btn btn-line" href="#ui">Start a pilot</a></div>
+      <div class="bg-row bg-row-dark"><a class="btn btn-neon btn-sm" href="#ui">Approve</a><a class="btn btn-ghost btn-sm" href="#ui">Give Vael a task</a></div>
+      <p>One Neon button per view. Pill shape, 48 px or 38 px tall.</p>
+    </div>
+    <div class="bg-card">
+      <h3>Radius</h3>
+      <div class="bg-radii"><i style="border-radius:8px"></i><i style="border-radius:16px"></i><i style="border-radius:28px"></i><i style="border-radius:999px"></i></div>
+      <div class="bg-radii-l"><span>8</span><span>16</span><span>28</span><span>Pill</span></div>
+      <p>8 tags · 16 inner cards · 28 tiles and panels · pill for buttons and chips.</p>
+    </div>
+  </div>
+
+  <div class="bg-grid-2">
+    <div class="bg-card">
+      <h3>Spacing</h3>
+      <div class="bg-space">
+        <div><i style="width:4px"></i>4</div><div><i style="width:8px"></i>8</div><div><i style="width:16px"></i>16</div><div><i style="width:32px"></i>32</div><div><i style="width:72px"></i>72</div><div><i style="width:150px"></i>150</div>
+      </div>
+      <p>16 between cards. 72 under section titles. 150 between sections.</p>
+    </div>
+    <div class="bg-card">
+      <h3>Motion</h3>
+      <div class="bg-motion"><i></i></div>
+      <dl class="bg-dl-tight">
+        <div><dt>Easing</dt><dd>cubic-bezier(.2, .7, .1, 1)</dd></div>
+        <div><dt>Fast</dt><dd>250 ms · hovers, presses</dd></div>
+        <div><dt>Base</dt><dd>600 ms · cards, states</dd></div>
+        <div><dt>Slow</dt><dd>900 ms · section reveals</dd></div>
+      </dl>
+      <p>Respect reduced motion. Nothing loops except Vael's breath and live data.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 09 APPLICATIONS -->
+<section class="bg-ch" id="applications">
+  <div class="bg-head">
+    <span class="bg-num">09</span>
+    <h2>Applications</h2>
+    <p>The same few parts, everywhere.</p>
+  </div>
+
+  <div class="bg-apps">
+    <div class="bg-app bg-app-cards">
+      <div class="bc bc-front"><span class="brand"><svg class="brand-mark"><use href="#mark"/></svg><span class="brand-word">vael</span></span><div class="vael vael-md" data-state="idle" aria-hidden="true"><span class="vael-body"></span><span class="vael-eyes"><i></i><i></i></span></div></div>
+      <div class="bc bc-back"><b>Noah Laurent</b><span>Head of Customer Finance</span><span class="bc-meta">noah@vael.ai<br>+33 6 12 34 56 78</span></div>
+    </div>
+    <div class="bg-app bg-app-social">
+      <div class="post">
+        <div class="vael vael-md" data-state="done" aria-hidden="true"><span class="vael-body"></span><span class="vael-eyes"><i></i><i></i></span></div>
+        <p class="post-big">2 days.</p>
+        <p class="post-sub">Halcyon Freight closed Q3 in 2 days, not 9.</p>
+        <span class="brand post-brand"><svg class="brand-mark"><use href="#mark"/></svg><span class="brand-word">vael</span></span>
+      </div>
+    </div>
+    <div class="bg-app bg-app-icons">
+      <div class="bg-appicon bg-appicon-lg"><svg><use href="#mark"/></svg></div>
+      <div class="bg-appicon bg-appicon-face"><div class="vael" style="--s:58px" data-state="idle" aria-hidden="true"><span class="vael-body"></span><span class="vael-eyes"><i></i><i></i></span></div></div>
+      <div class="bg-slack"><div class="vael vael-sm" data-state="done" aria-hidden="true"><span class="vael-body"></span><span class="vael-eyes"><i></i><i></i></span></div><div><b>Vael</b> <small>APP</small><p>October is ready for you. 14 entries, 2 flagged.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 ASSETS -->
+<section class="bg-ch" id="assets">
+  <div class="bg-head">
+    <span class="bg-num">10</span>
+    <h2>Assets</h2>
+    <p>Use these files. Don't redraw the mark.</p>
+  </div>
+  <div class="bg-assets">
+    <a href="assets/vael-mark-ink.svg" download><span class="bg-asset-prev"><img src="assets/vael-mark-ink.svg" alt=""></span><b>Mark · Ink</b><small>SVG</small></a>
+    <a href="assets/vael-mark-white.svg" download><span class="bg-asset-prev bg-asset-dark"><img src="assets/vael-mark-white.svg" alt=""></span><b>Mark · White + Neon</b><small>SVG</small></a>
+    <a href="assets/favicon.svg" download><span class="bg-asset-prev"><img src="assets/favicon.svg" alt=""></span><b>App icon</b><small>SVG</small></a>
+    <a href="assets/vael-face.svg" download><span class="bg-asset-prev bg-asset-dark"><img src="assets/vael-face.svg" alt=""></span><b>Vael face</b><small>SVG</small></a>
+    <a href="https://fonts.google.com/specimen/Funnel+Display" target="_blank" rel="noopener"><span class="bg-asset-prev bg-asset-type">Aa</span><b>Funnel Display</b><small>Google Fonts ↗</small></a>
+    <a href="https://fonts.google.com/specimen/Geist" target="_blank" rel="noopener"><span class="bg-asset-prev bg-asset-type bg-asset-geist">Aa</span><b>Geist</b><small>Google Fonts ↗</small></a>
+  </div>
+</section>
+
+<footer class="bg-foot">
+  <span class="brand"><svg class="brand-mark"><use href="#mark"/></svg><span class="brand-word">vael</span></span>
+  <span>Brand Guidelines 1.0 · Design concept. Vael is fictional.</span>
+  <a href="index.html">← Back to the site</a>
+</footer>
+
+<script src="brand.js"></script>
+</body>
+</html>
