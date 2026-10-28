@@ -4,24 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Vael — The finance agent that closes your books</title>
-  <meta name="description" content="Vael is an AI agent for finance teams. It reconciles, closes and audits your books. Your team approves. Vael does the rest.">
+  <meta name="description" content="Vael is an AI agent for finance teams. It reconciles, closes and audits your books. You approve. Vael does the rest.">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- Brand mark, reused everywhere through <use> -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="mark" viewBox="0 0 32 32">
     <path d="M7.2 7.6 L15.2 24.4" stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none"/>
-    <circle class="mark-dot" cx="23.6" cy="9.4" r="4.6" fill="var(--dot, currentColor)"/>
+    <circle cx="23.6" cy="9.4" r="4.6" fill="var(--dot, currentColor)"/>
   </symbol>
 </svg>
 
-<!-- ───────────── NAV ───────────── -->
+<!-- NAV -->
 <header class="nav" id="nav">
   <a class="brand" href="#top" aria-label="Vael home">
     <svg class="brand-mark"><use href="#mark"/></svg>
@@ -29,7 +28,6 @@
   </a>
   <nav class="nav-links" aria-label="Main">
     <a href="#how">Product</a>
-    <a href="#capabilities">Capabilities</a>
     <a href="#customers">Customers</a>
     <a href="#security">Security</a>
     <a href="#pricing">Pricing</a>
@@ -40,133 +38,81 @@
   </div>
 </header>
 
-<!-- Guided progress rail -->
-<aside class="rail" aria-label="Page sections">
-  <a href="#top" data-rail="top"><i></i><span>Start</span></a>
-  <a href="#how" data-rail="how"><i></i><span>01 How it works</span></a>
-  <a href="#capabilities" data-rail="capabilities"><i></i><span>02 What it does</span></a>
-  <a href="#proof" data-rail="proof"><i></i><span>03 Results</span></a>
-  <a href="#customers" data-rail="customers"><i></i><span>04 Customers</span></a>
-  <a href="#security" data-rail="security"><i></i><span>05 Trust</span></a>
-  <a href="#demo" data-rail="demo"><i></i><span>06 Start</span></a>
-</aside>
-
 <main>
 
-<!-- ───────────── HERO ───────────── -->
-<section class="hero" id="top" data-section="top">
+<!-- HERO -->
+<section class="hero" id="top">
   <canvas class="hero-field" id="field" aria-hidden="true"></canvas>
   <div class="hero-glow" aria-hidden="true"></div>
 
   <div class="hero-inner">
-    <a class="pill" href="#capabilities">
-      <span class="pill-tag">New</span>
-      Vael Close 2.0 — month-end in 2 days
-      <span aria-hidden="true">→</span>
-    </a>
+    <div class="vael vael-xl" id="hero-face" data-state="idle" aria-hidden="true">
+      <span class="vael-ring"></span>
+      <span class="vael-body"></span>
+      <span class="vael-eyes"><i></i><i></i></span>
+    </div>
 
-    <h1 class="hero-title">
-      Your books close<br>
-      <span class="hero-title-dim">while you</span> sleep.
-    </h1>
+    <h1 class="hero-title">Your books close<br><span class="hero-title-dim">while you</span> sleep.</h1>
 
-    <p class="hero-sub">
-      Vael is an AI agent for finance teams. It <b>reconciles, closes and audits</b> your accounts. You approve. Vael does the rest.
-    </p>
+    <p class="hero-sub">Meet Vael, the AI agent for finance teams. It <b>reconciles, closes and audits</b> your books. You approve. Vael does the rest.</p>
 
     <div class="hero-ctas">
       <a class="btn btn-neon" href="#demo">Book a demo</a>
-      <a class="btn btn-ghost" href="#console">Try the agent <span aria-hidden="true">↓</span></a>
+      <a class="btn btn-ghost" href="#console">Give Vael a task</a>
     </div>
 
-    <!-- Interactive agent console -->
+    <!-- Agent console -->
     <div class="console" id="console">
-      <div class="console-bar">
-        <div class="console-dots"><i></i><i></i><i></i></div>
-        <div class="console-title">
-          <svg class="console-mark"><use href="#mark"/></svg>
-          Vael Agent <span class="sep">/</span> <span class="muted">Halcyon Freight</span>
+      <div class="console-head">
+        <div class="vael vael-sm" data-state="idle" id="chat-face" aria-hidden="true">
+          <span class="vael-body"></span><span class="vael-eyes"><i></i><i></i></span>
         </div>
-        <div class="console-status"><span class="live-dot"></span> Live sandbox</div>
+        <b>Vael</b>
+        <span class="console-status" id="status">Ready</span>
       </div>
 
-      <div class="console-body">
-        <div class="console-side">
-          <p class="console-label">Pick a task</p>
-          <button class="task is-active" data-task="reconcile">
-            <span class="task-icon">⇄</span>
-            <span><b>Reconcile October</b><small>Bank feeds vs. ledger</small></span>
-          </button>
-          <button class="task" data-task="collect">
-            <span class="task-icon">↗</span>
-            <span><b>Chase late invoices</b><small>32 clients past due</small></span>
-          </button>
-          <button class="task" data-task="audit">
-            <span class="task-icon">◎</span>
-            <span><b>Explain a spike</b><small>SaaS spend +41%</small></span>
-          </button>
-          <div class="console-side-foot">
-            <span class="kbd">⌘</span><span class="kbd">K</span> or type below
-          </div>
+      <div class="thread" id="thread" aria-live="polite">
+        <div class="msg msg-vael is-intro">
+          <p>Hi, I'm Vael. Pick a task below and watch me work.</p>
         </div>
+      </div>
 
-        <div class="console-main">
-          <form class="prompt" id="prompt" autocomplete="off">
-            <span class="prompt-caret">›</span>
-            <input id="prompt-input" type="text" aria-label="Ask Vael" placeholder="Ask Vael to do anything in your books…" value="Reconcile October bank feeds against NetSuite">
-            <button class="btn btn-neon btn-sm" type="submit" id="run-btn">Run <span aria-hidden="true">↵</span></button>
-          </form>
-
-          <ol class="log" id="log" aria-live="polite"></ol>
-
-          <div class="result" id="result" hidden>
-            <div class="result-grid" id="result-grid"></div>
-            <div class="result-actions">
-              <p class="result-note" id="result-note"></p>
-              <button class="btn btn-neon btn-sm" id="approve-btn">Approve</button>
-            </div>
-          </div>
-
-          <div class="console-idle" id="idle">
-            <svg class="idle-mark"><use href="#mark"/></svg>
-            <p>Pick a task or type your own. Vael shows every step.</p>
-          </div>
+      <div class="console-foot">
+        <div class="suggest">
+          <button class="chip-btn is-active" data-task="reconcile">Reconcile October</button>
+          <button class="chip-btn" data-task="collect">Chase late invoices</button>
+          <button class="chip-btn" data-task="audit">Explain a spend spike</button>
         </div>
+        <form class="prompt" id="prompt" autocomplete="off">
+          <input id="prompt-input" type="text" aria-label="Ask Vael" placeholder="Ask Vael anything about your books…">
+          <button class="send" type="submit" id="run-btn" aria-label="Send">↑</button>
+        </form>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ───────────── LOGOS ───────────── -->
+<!-- LOGOS -->
 <section class="logos" aria-label="Customers">
-  <p class="logos-label">Trusted by <b>1,200+ finance teams</b> — from Series A to public.</p>
+  <p class="logos-label">Trusted by <b>1,200+ finance teams</b></p>
   <div class="marquee">
-    <div class="marquee-track">
-      <span class="logo l1">Halcyon<sup>®</sup></span>
-      <span class="logo l2">MERCER&nbsp;&amp;&nbsp;LOWE</span>
-      <span class="logo l3">pallas health</span>
-      <span class="logo l4">◐ Ostrava</span>
-      <span class="logo l5">Fieldnote</span>
-      <span class="logo l6">CORVID/CAPITAL</span>
-      <span class="logo l7">arden bio</span>
-      <span class="logo l8">Tessel▲</span>
-      <span class="logo l1">Halcyon<sup>®</sup></span>
-      <span class="logo l2">MERCER&nbsp;&amp;&nbsp;LOWE</span>
-      <span class="logo l3">pallas health</span>
-      <span class="logo l4">◐ Ostrava</span>
-      <span class="logo l5">Fieldnote</span>
-      <span class="logo l6">CORVID/CAPITAL</span>
-      <span class="logo l7">arden bio</span>
-      <span class="logo l8">Tessel▲</span>
+    <div class="marquee-track" id="logo-track">
+      <span class="clogo"><svg viewBox="0 0 24 24"><path d="M2 14a10 10 0 0 1 20 0z"/><rect x="2" y="16" width="20" height="3" rx="1.5"/></svg>Halcyon</span>
+      <span class="clogo clogo-caps"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="18" rx="1" transform="skewX(-12) translate(3 0)"/></svg>Mercer&amp;Lowe</span>
+      <span class="clogo clogo-serif"><svg viewBox="0 0 24 24"><path d="M12 2 22 21H2z"/></svg>pallas</span>
+      <span class="clogo"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20z" fill="#0A0A0A"/></svg>Ostrava</span>
+      <span class="clogo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M7 9h10M7 13h10M7 17h6" stroke="#0A0A0A" stroke-width="2"/></svg>Fieldnote</span>
+      <span class="clogo clogo-caps"><svg viewBox="0 0 24 24"><path d="M2 18 12 4l10 14h-5l-5-7-5 7z"/></svg>Corvid</span>
+      <span class="clogo"><svg viewBox="0 0 24 24"><path d="M12 2c5 5 7 9 7 12a7 7 0 0 1-14 0c0-3 2-7 7-12z"/></svg>arden</span>
+      <span class="clogo"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="9" height="9" rx="2"/><rect x="13" y="2" width="9" height="9" rx="4.5"/><rect x="2" y="13" width="9" height="9" rx="4.5"/><rect x="13" y="13" width="9" height="9" rx="2"/></svg>Tessel</span>
     </div>
   </div>
 </section>
 
-<!-- ───────────── 01 HOW IT WORKS ───────────── -->
-<section class="how section" id="how" data-section="how">
+<!-- HOW IT WORKS -->
+<section class="how section" id="how">
   <div class="container">
     <header class="section-head">
-      <p class="eyebrow"><span class="eyebrow-num">01</span> How Vael works</p>
       <h2 class="h2">Three steps.<br><span class="dim">Zero new habits.</span></h2>
       <p class="lead">Vael plugs into the tools you use today. It learns your rules in a week. Then it <b>takes the work off your plate</b>.</p>
     </header>
@@ -174,17 +120,14 @@
     <div class="steps">
       <div class="steps-list">
         <article class="step is-active" data-step="0">
-          <span class="step-num">Step 1</span>
           <h3>Connect your stack</h3>
           <p>Link your ERP, banks and billing in 10 minutes. Vael reads. It never writes until you say so.</p>
         </article>
         <article class="step" data-step="1">
-          <span class="step-num">Step 2</span>
           <h3>Hand off the task</h3>
-          <p>Ask in plain words. "Close October." Vael plans the work, runs it and shows each move.</p>
+          <p>Ask in plain words: "Close October." Vael plans the work and shows each move.</p>
         </article>
         <article class="step" data-step="2">
-          <span class="step-num">Step 3</span>
           <h3>Review and approve</h3>
           <p>You get a clean summary. One click posts it. <b>Every action lands in your audit trail.</b></p>
         </article>
@@ -192,131 +135,99 @@
 
       <div class="steps-stage">
         <div class="stage-card" data-stage="0">
-          <div class="stage-head"><span>Connections</span><span class="chip chip-ok">4 live</span></div>
-          <ul class="conn">
-            <li><span class="conn-logo">NS</span><span>NetSuite<small>ERP · General ledger</small></span><em class="ok">Connected</em></li>
-            <li><span class="conn-logo">ST</span><span>Stripe<small>Payouts · Fees</small></span><em class="ok">Connected</em></li>
-            <li><span class="conn-logo">••</span><span>Operating ••4821<small>Bank feed · Daily</small></span><em class="ok">Connected</em></li>
-            <li><span class="conn-logo">SL</span><span>Slack<small>#finance-close</small></span><em class="ok">Connected</em></li>
-            <li class="pending"><span class="conn-logo">RP</span><span>Ramp<small>Cards · Receipts</small></span><em>Syncing<i class="bar"><i></i></i></em></li>
-          </ul>
+          <div class="stage-head">
+            <div class="vael vael-sm" data-state="idle" aria-hidden="true"><span class="vael-body"></span><span class="vael-eyes"><i></i><i></i></span></div>
+            <span>Vael is linked to 5 tools</span>
+          </div>
+          <div class="conn"><div class="conn-item" style="--brand:#F80000"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.412 4.412h-8.82a7.588 7.588 0 0 0-.008 15.176h8.828a7.588 7.588 0 0 0 0-15.176zm-.193 12.502H7.786a4.915 4.915 0 0 1 0-9.828h8.433a4.914 4.914 0 1 1 0 9.828z"/></svg><span>NetSuite</span><i class="ok">✓</i></div><div class="conn-item" style="--brand:#635BFF"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z"/></svg><span>Stripe</span><i class="ok">✓</i></div><div class="conn-item" style="--brand:#00A1E0"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.006 5.415a4.195 4.195 0 013.045-1.306c1.56 0 2.954.9 3.69 2.205.63-.3 1.35-.45 2.1-.45 2.85 0 5.159 2.34 5.159 5.22s-2.31 5.22-5.176 5.22c-.345 0-.69-.044-1.02-.104a3.75 3.75 0 01-3.3 1.95c-.6 0-1.155-.15-1.65-.375A4.314 4.314 0 018.88 20.4a4.302 4.302 0 01-4.05-2.82c-.27.062-.54.076-.825.076-2.204 0-4.005-1.8-4.005-4.05 0-1.5.811-2.805 2.01-3.51-.255-.57-.39-1.2-.39-1.846 0-2.58 2.1-4.65 4.65-4.65 1.53 0 2.85.705 3.72 1.8"/></svg><span>Salesforce</span><i class="ok">✓</i></div><div class="conn-item" style="--brand:#4A154B"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg><span>Slack</span><i class="ok">✓</i></div><div class="conn-item" style="--brand:#212121"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.69 2.319a3.868 3.868 0 0 0-3.108 1.547l-.759 1.007a1.658 1.658 0 0 1-1.313.656H0V21.68h5.296a3.87 3.87 0 0 0 3.108-1.547l.759-1.006a1.656 1.656 0 0 1 1.313-.657H24V2.319h-5.31Zm1.108 11.949h-5.66a3.87 3.87 0 0 0-3.108 1.547l-.759 1.007a1.658 1.658 0 0 1-1.313.656H4.202V9.731h5.661a3.868 3.868 0 0 0 3.107-1.547l.759-1.006a1.658 1.658 0 0 1 1.313-.657h4.771l-.015 7.747Z"/></svg><span>Brex</span><i class="ok">✓</i></div></div>
         </div>
 
         <div class="stage-card" data-stage="1">
-          <div class="stage-head"><span>Plan · Close October</span><span class="chip">7 tasks</span></div>
+          <div class="stage-head">
+            <div class="vael vael-sm" data-state="working" aria-hidden="true"><span class="vael-body"></span><span class="vael-eyes"><i></i><i></i></span></div>
+            <span>Closing October</span>
+          </div>
           <ol class="plan">
-            <li class="done">Lock September period</li>
+            <li class="done">Lock September</li>
             <li class="done">Reconcile 3 bank accounts</li>
-            <li class="done">Match Stripe payouts to invoices</li>
+            <li class="done">Match Stripe payouts</li>
             <li class="run">Accrue open vendor bills</li>
             <li>Book deferred revenue</li>
-            <li>Run flux analysis vs. last month</li>
-            <li>Draft close memo for CFO</li>
+            <li>Draft the close memo</li>
           </ol>
-          <div class="plan-foot"><span class="spinner"></span> Vael is on task 4 of 7</div>
         </div>
 
         <div class="stage-card" data-stage="2">
-          <div class="stage-head"><span>Ready for review</span><span class="chip chip-neon">Needs you</span></div>
+          <div class="stage-head">
+            <div class="vael vael-sm" data-state="done" aria-hidden="true"><span class="vael-body"></span><span class="vael-eyes"><i></i><i></i></span></div>
+            <span>October is ready for you</span>
+          </div>
           <div class="review">
-            <div class="review-row"><span>Journal entries</span><b>14</b></div>
-            <div class="review-row"><span>Total impact</span><b>$182,440.18</b></div>
-            <div class="review-row"><span>Confidence</span><b>99.2%</b></div>
-            <div class="review-row"><span>Flagged for a human</span><b class="neon-text">2</b></div>
+            <div><span>Journal entries</span><b>14</b></div>
+            <div><span>Total impact</span><b>$182,440</b></div>
+            <div><span>Flagged for you</span><b class="neon-text">2</b></div>
           </div>
-          <div class="review-actions">
-            <button class="btn btn-line btn-sm" type="button">Open details</button>
-            <button class="btn btn-neon btn-sm" type="button">Approve &amp; post</button>
-          </div>
-          <p class="review-log">✓ Logged by Vael · Approved by C. Dubois · 09:14</p>
+          <button class="btn btn-neon btn-sm btn-block" type="button">Approve &amp; post</button>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ───────────── 02 CAPABILITIES ───────────── -->
-<section class="caps section" id="capabilities" data-section="capabilities">
+<!-- CAPABILITIES -->
+<section class="caps section" id="capabilities">
   <div class="container">
     <header class="section-head">
-      <p class="eyebrow"><span class="eyebrow-num">02</span> What Vael does</p>
       <h2 class="h2">One agent.<br><span class="dim">The whole back office.</span></h2>
-      <p class="lead">Vael handles the tasks that eat your month. Your team <b>gets back 60 hours</b> each close.</p>
+      <p class="lead">Your team <b>gets back 60 hours</b> every month-end.</p>
     </header>
 
     <div class="bento">
-      <article class="card card-lg">
-        <div class="card-copy">
-          <span class="card-tag">Reconcile</span>
-          <h3>Match every line. In minutes.</h3>
-          <p>Vael matches bank, card and payout data to your ledger. It <b>clears 97% of lines</b> with no human touch.</p>
+      <article class="tile tile-dark tile-wide">
+        <div class="tile-copy">
+          <h3>Match every line in minutes.</h3>
+          <p>97% of lines clear with no human touch.</p>
         </div>
-        <div class="match">
-          <div class="match-col">
-            <p class="match-h">Bank</p>
-            <div class="m-row" style="--d:0">Stripe payout <b>$24,180.00</b></div>
-            <div class="m-row" style="--d:1">ACH · Brightwater <b>$8,400.00</b></div>
-            <div class="m-row" style="--d:2">Wire · Kessler AG <b>$61,925.40</b></div>
-            <div class="m-row warn" style="--d:3">Card · AWS <b>$3,212.77</b></div>
+        <div class="flow" aria-hidden="true">
+          <div class="flow-lane">
+            <span style="--i:0">$24,180</span><span style="--i:1">$8,400</span><span style="--i:2">$61,925</span><span style="--i:3">$3,212</span><span style="--i:4">$12,400</span><span style="--i:5">$940</span>
           </div>
-          <svg class="match-lines" viewBox="0 0 80 200" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M0 26 C40 26 40 26 80 26"/>
-            <path d="M0 74 C40 74 40 122 80 122"/>
-            <path d="M0 122 C40 122 40 74 80 74"/>
-            <path class="warn" d="M0 170 C40 170 40 170 80 170"/>
+          <div class="vael vael-md" data-state="working"><span class="vael-ring"></span><span class="vael-body"></span><span class="vael-eyes"><i></i><i></i></span></div>
+        </div>
+      </article>
+
+      <article class="tile tile-neon">
+        <p class="big-num">2<small>days</small></p>
+        <div class="tile-copy">
+          <h3>Month-end, not 9 days.</h3>
+          <div class="days" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+      </article>
+
+      <article class="tile">
+        <div class="note-stack" aria-hidden="true">
+          <div class="note"><div class="vael vael-xs" data-state="done"><span class="vael-body"></span><span class="vael-eyes"><i></i><i></i></span></div><p><b>Brightwater paid</b> $12,400</p></div>
+          <div class="note"><div class="vael vael-xs" data-state="done"><span class="vael-body"></span><span class="vael-eyes"><i></i><i></i></span></div><p><b>Kessler AG paid</b> $61,925</p></div>
+        </div>
+        <div class="tile-copy">
+          <h3>Get paid on time.</h3>
+          <p>Vael chases late invoices for you.</p>
+        </div>
+      </article>
+
+      <article class="tile tile-wide tile-audit">
+        <div class="tile-copy">
+          <h3>Catch the leak before your auditor does.</h3>
+          <p>Vael flags odd spend and tells you why.</p>
+        </div>
+        <div class="spark" aria-hidden="true">
+          <svg viewBox="0 0 400 140" preserveAspectRatio="none">
+            <path class="spark-line" d="M0 112 C40 108 70 110 110 104 S180 106 220 100 S270 98 300 92 C320 88 330 40 340 38 C350 36 370 50 400 48"/>
           </svg>
-          <div class="match-col">
-            <p class="match-h">Ledger</p>
-            <div class="m-row" style="--d:0">INV-2291 <b>$24,180.00</b></div>
-            <div class="m-row" style="--d:1">INV-2307 <b>$61,925.40</b></div>
-            <div class="m-row" style="--d:2">INV-2302 <b>$8,400.00</b></div>
-            <div class="m-row warn" style="--d:3">No match · <b>review</b></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="card">
-        <span class="card-tag">Close</span>
-        <h3>Month-end in 2 days, not 9.</h3>
-        <div class="close-ring">
-          <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50"/><circle class="ring-val" cx="60" cy="60" r="50"/></svg>
-          <div class="close-ring-label"><b>86%</b><span>Day 2</span></div>
-        </div>
-        <p>Vael runs the checklist, books accruals and writes the memo.</p>
-      </article>
-
-      <article class="card">
-        <span class="card-tag">Collect</span>
-        <h3>Get paid without the awkward emails.</h3>
-        <div class="mail">
-          <p class="mail-to">To: ap@brightwater.co</p>
-          <p>Hi Dana — invoice <b>INV-2288</b> for $12,400 is 14 days late. Here is a pay link. Thanks!</p>
-          <div class="mail-foot"><span class="chip">Draft</span><span class="chip chip-ok">Tone: warm</span></div>
-        </div>
-        <p><b>Cut DSO by 11 days</b> on average.</p>
-      </article>
-
-      <article class="card card-wide">
-        <div class="card-copy">
-          <span class="card-tag">Audit</span>
-          <h3>Catch the leak before the auditor does.</h3>
-          <p>Vael watches every dollar. It flags odd spend and <b>tells you why in one line</b>.</p>
-        </div>
-        <div class="spark">
-          <svg viewBox="0 0 400 140" preserveAspectRatio="none" aria-hidden="true">
-            <defs>
-              <linearGradient id="sparkfill" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0" stop-color="#E6FF2B" stop-opacity=".35"/>
-                <stop offset="1" stop-color="#E6FF2B" stop-opacity="0"/>
-              </linearGradient>
-            </defs>
-            <path class="spark-area" d="M0 110 L40 104 L80 108 L120 98 L160 102 L200 96 L240 100 L280 92 L320 40 L360 52 L400 48 L400 140 L0 140 Z"/>
-            <path class="spark-line" d="M0 110 L40 104 L80 108 L120 98 L160 102 L200 96 L240 100 L280 92 L320 40 L360 52 L400 48"/>
-            <circle class="spark-dot" cx="320" cy="40" r="5"/>
-          </svg>
-          <div class="spark-flag">
-            <b>SaaS spend +41%</b>
-            <span>3 duplicate seats on Figma, Notion and Linear. Save <b>$2,940/mo</b>.</span>
+          <span class="spark-dot"></span>
+          <div class="spark-bubble">
+            <div class="vael vael-xs" data-state="thinking"><span class="vael-body"></span><span class="vael-eyes"><i></i><i></i></span></div>
+            <p>3 tools billed twice. <b>Save $2,940/mo.</b></p>
           </div>
         </div>
       </article>
@@ -324,63 +235,42 @@
   </div>
 </section>
 
-<!-- ───────────── 03 PROOF ───────────── -->
-<section class="proof section" id="proof" data-section="proof">
+<!-- PROOF -->
+<section class="proof section" id="proof">
   <canvas class="proof-art" id="orb" aria-hidden="true"></canvas>
-  <div class="container proof-inner">
-    <p class="eyebrow eyebrow-dark"><span class="eyebrow-num">03</span> Results</p>
-    <h2 class="h2 proof-title">Teams that run on Vael<br><span class="dim">close faster and sleep better.</span></h2>
-
+  <div class="container">
+    <h2 class="h2 proof-title">Teams on Vael close faster<br><span class="dim">and sleep better.</span></h2>
     <div class="stats">
-      <div class="stat">
-        <p class="stat-val"><span data-count="78">0</span>%</p>
-        <p class="stat-lbl">Faster month-end close</p>
-      </div>
-      <div class="stat">
-        <p class="stat-val"><span data-count="97">0</span>%</p>
-        <p class="stat-lbl">Lines matched with no human touch</p>
-      </div>
-      <div class="stat">
-        <p class="stat-val">$<span data-count="38">0</span>B</p>
-        <p class="stat-lbl">Transactions reconciled in 2026</p>
-      </div>
-      <div class="stat">
-        <p class="stat-val"><span data-count="0" data-final="0">0</span></p>
-        <p class="stat-lbl">Entries posted without approval. Ever.</p>
-      </div>
+      <div class="stat"><p class="stat-val"><span data-count="78">0</span>%</p><p class="stat-lbl">Faster month-end close</p></div>
+      <div class="stat"><p class="stat-val"><span data-count="97">0</span>%</p><p class="stat-lbl">Lines matched with no human touch</p></div>
+      <div class="stat"><p class="stat-val">$<span data-count="38">0</span>B</p><p class="stat-lbl">Reconciled in 2026</p></div>
+      <div class="stat"><p class="stat-val">0</p><p class="stat-lbl">Entries posted without approval</p></div>
     </div>
   </div>
 </section>
 
-<!-- ───────────── 04 CUSTOMERS ───────────── -->
-<section class="customers section" id="customers" data-section="customers">
+<!-- CUSTOMERS -->
+<section class="customers section" id="customers">
   <div class="container">
     <header class="section-head">
-      <p class="eyebrow"><span class="eyebrow-num">04</span> Customers</p>
       <h2 class="h2">Finance leaders trust Vael<br><span class="dim">with the numbers that matter.</span></h2>
     </header>
 
     <div class="story">
       <div class="story-visual" aria-hidden="true">
-        <div class="story-img">
-          <div class="story-glass">
-            <p class="sg-label">Halcyon Freight · Close time</p>
-            <div class="sg-bars">
-              <div><i style="--h:100%"></i><span>Q1</span></div>
-              <div><i style="--h:72%"></i><span>Q2</span></div>
-              <div><i style="--h:38%"></i><span>Q3</span></div>
-              <div class="hl"><i style="--h:22%"></i><span>Q4</span></div>
-            </div>
-            <p class="sg-foot"><b>9.2 → 2.1 days</b></p>
+        <div class="story-glass">
+          <div class="sg-bars">
+            <i style="--h:100%"></i><i style="--h:72%"></i><i style="--h:38%"></i><i class="hl" style="--h:22%"></i>
           </div>
+          <p class="sg-foot">9.2 → 2.1 days</p>
         </div>
       </div>
       <figure class="story-quote">
-        <span class="story-logo">Halcyon<sup>®</sup></span>
+        <span class="clogo clogo-dark"><svg viewBox="0 0 24 24"><path d="M2 14a10 10 0 0 1 20 0z"/><rect x="2" y="16" width="20" height="3" rx="1.5"/></svg>Halcyon</span>
         <blockquote>“We closed Q3 in two days. My team spent the rest of the week on pricing — the work that moves the business.”</blockquote>
         <figcaption>
-          <span class="avatar" style="--a:#1d1d1a;--b:#E6FF2B">CD</span>
-          <span><b>Claire Dubois</b><small>CFO, Halcyon Freight · 420 employees</small></span>
+          <span class="avatar" style="--a:#0A0A0A;--b:#E6FF2B">CD</span>
+          <span><b>Claire Dubois</b><small>CFO, Halcyon Freight</small></span>
         </figcaption>
         <div class="story-stats">
           <div><b>−77%</b><span>close time</span></div>
@@ -396,7 +286,7 @@
         <figcaption><span class="avatar" style="--a:#E6FF2B;--b:#0A0A0A">MO</span><span><b>Marcus Okafor</b><small>Controller, Pallas Health</small></span></figcaption>
       </figure>
       <figure class="quote">
-        <blockquote>“Our auditors asked for the trail. We sent one link. Every step, every approval, every source. Done.”</blockquote>
+        <blockquote>“Our auditors asked for the trail. We sent one link. Every step, every approval, every source.”</blockquote>
         <figcaption><span class="avatar" style="--a:#2a2a26;--b:#fff">SL</span><span><b>Sofia Lindqvist</b><small>VP Finance, Ostrava</small></span></figcaption>
       </figure>
       <figure class="quote">
@@ -404,124 +294,141 @@
         <figcaption><span class="avatar" style="--a:#d9d9d2;--b:#0A0A0A">JR</span><span><b>James Reyes</b><small>Head of Accounting, Tessel</small></span></figcaption>
       </figure>
     </div>
-
-    <div class="ratings">
-      <div><b>4.9</b><span>★★★★★</span><small>G2 · 310 reviews</small></div>
-      <div><b>#1</b><span>Close Automation</span><small>G2 Fall 2026</small></div>
-      <div><b>98%</b><span>Renewal rate</span><small>Net, trailing 12 mo</small></div>
-    </div>
   </div>
 </section>
 
-<!-- ───────────── 05 SECURITY ───────────── -->
-<section class="security section" id="security" data-section="security">
+<!-- SECURITY -->
+<section class="security section" id="security">
   <div class="container sec-grid">
     <div>
-      <p class="eyebrow"><span class="eyebrow-num">05</span> Trust &amp; control</p>
       <h2 class="h2">You stay in charge.<br><span class="dim">Always.</span></h2>
       <p class="lead">Vael never moves money. It <b>never posts without your approval</b>. Every step leaves a record your auditor can read.</p>
-
       <ul class="trust">
-        <li><span class="trust-ico">◇</span><div><b>SOC 2 Type II &amp; ISO 27001</b><small>Audited every year by a third party.</small></div></li>
-        <li><span class="trust-ico">◇</span><div><b>Your data trains nothing</b><small>We never use your books to train models.</small></div></li>
-        <li><span class="trust-ico">◇</span><div><b>Role-based approvals</b><small>Set who signs off, by amount and account.</small></div></li>
-        <li><span class="trust-ico">◇</span><div><b>EU or US data residency</b><small>GDPR ready. Pick where your data lives.</small></div></li>
+        <li>SOC 2 Type II &amp; ISO 27001</li>
+        <li>Your data trains nothing</li>
+        <li>Approvals by role and amount</li>
+        <li>EU or US data residency</li>
       </ul>
     </div>
 
     <div class="audit">
-      <div class="audit-head"><span>Audit trail · JE-10482</span><span class="chip chip-ok">Immutable</span></div>
       <ol class="audit-list">
-        <li><time>09:02:11</time><span><b>Vael</b> read 412 lines from NetSuite</span></li>
-        <li><time>09:02:14</time><span><b>Vael</b> matched to Stripe payout po_8Hx…</span></li>
-        <li><time>09:02:15</time><span><b>Vael</b> drafted accrual · $12,400.00</span></li>
-        <li><time>09:02:15</time><span><b>Vael</b> cited source: contract §4.2</span></li>
-        <li class="hl"><time>09:14:40</time><span><b>C. Dubois</b> approved</span></li>
-        <li><time>09:14:41</time><span><b>Vael</b> posted to period Oct-26</span></li>
+        <li><time>09:02</time><span><b>Vael</b> read 412 lines from NetSuite</span></li>
+        <li><time>09:02</time><span><b>Vael</b> matched a Stripe payout</span></li>
+        <li><time>09:02</time><span><b>Vael</b> drafted an accrual · $12,400</span></li>
+        <li><time>09:02</time><span><b>Vael</b> cited the contract, §4.2</span></li>
+        <li class="hl"><time>09:14</time><span><b>Claire Dubois</b> approved</span></li>
+        <li><time>09:14</time><span><b>Vael</b> posted to October</span></li>
       </ol>
-      <div class="badges">
-        <span class="badge">SOC 2</span><span class="badge">ISO 27001</span><span class="badge">GDPR</span><span class="badge">AES-256</span>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- ───────────── INTEGRATIONS + PRICING ───────────── -->
-<section class="stack section" id="pricing">
+<!-- INTEGRATIONS -->
+<section class="stack section" id="integrations">
   <div class="container">
     <header class="section-head center">
-      <p class="eyebrow">Works with your stack</p>
-      <h2 class="h2">40+ native integrations.<br><span class="dim">Live in a day.</span></h2>
+      <h2 class="h2">Works with your stack.<br><span class="dim">Live in a day.</span></h2>
     </header>
-    <div class="integrations">
-      <span>NetSuite</span><span>QuickBooks</span><span>Xero</span><span>Sage Intacct</span><span>Stripe</span><span>Ramp</span>
-      <span>Brex</span><span>Bill.com</span><span>Plaid</span><span>Salesforce</span><span>HubSpot</span><span>Slack</span>
-      <span>Microsoft Teams</span><span>Google Drive</span><span>Snowflake</span><span class="more">+25 more</span>
-    </div>
+    <div class="integrations" id="integrations-grid"><div class="int" style="--brand:#F80000" title="Oracle NetSuite"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.412 4.412h-8.82a7.588 7.588 0 0 0-.008 15.176h8.828a7.588 7.588 0 0 0 0-15.176zm-.193 12.502H7.786a4.915 4.915 0 0 1 0-9.828h8.433a4.914 4.914 0 1 1 0 9.828z"/></svg><span>Oracle NetSuite</span></div><div class="int" style="--brand:#2CA01C" title="QuickBooks"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm.642 4.1335c.9554 0 1.7296.776 1.7296 1.7332v9.0667h1.6c1.614 0 2.9275-1.3156 2.9275-2.933 0-1.6173-1.3136-2.9333-2.9276-2.9333h-.6654V7.3334h.6654c2.5722 0 4.6577 2.0897 4.6577 4.667 0 2.5774-2.0855 4.6666-4.6577 4.6666H12.642zM7.9837 7.333h3.3291v12.533c-.9555 0-1.73-.7759-1.73-1.7332V9.0662H7.9837c-1.6146 0-2.9277 1.316-2.9277 2.9334 0 1.6175 1.3131 2.9333 2.9277 2.9333h.6654v1.7332h-.6654c-2.5725 0-4.6577-2.0892-4.6577-4.6665 0-2.5771 2.0852-4.6666 4.6577-4.6666Z"/></svg><span>QuickBooks</span></div><div class="int" style="--brand:#13B5EA" title="Xero"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm6.585 14.655c-1.485 0-2.69-1.206-2.69-2.689 0-1.485 1.207-2.691 2.69-2.691 1.485 0 2.69 1.207 2.69 2.691s-1.207 2.689-2.69 2.689zM7.53 14.644c-.099 0-.192-.041-.267-.116l-2.043-2.04-2.052 2.047c-.069.068-.16.108-.258.108-.202 0-.368-.166-.368-.368 0-.099.04-.191.111-.263l2.04-2.05-2.038-2.047c-.075-.069-.113-.162-.113-.261 0-.203.166-.366.368-.366.098 0 .188.037.258.105l2.055 2.048 2.048-2.045c.069-.071.162-.108.26-.108.211 0 .375.165.375.366 0 .098-.029.188-.104.258l-2.056 2.055 2.055 2.051c.068.069.104.16.104.258 0 .202-.165.368-.365.368h-.01zm8.017-4.591c-.796.101-.882.476-.882 1.404v2.787c0 .202-.165.366-.366.366-.203 0-.367-.165-.368-.366v-4.53c0-.204.16-.366.362-.366.166 0 .316.125.346.289.27-.209.6-.317.93-.317h.105c.195 0 .359.165.359.368 0 .201-.164.352-.375.359 0 0-.09 0-.164.008l.053-.002zm-3.091 2.205H8.625c0 .019.003.037.006.057.02.105.045.211.083.31.194.531.765 1.275 1.829 1.29.33-.003.631-.086.9-.229.21-.12.391-.271.525-.428.045-.058.09-.112.12-.168.18-.229.405-.186.54-.083.164.135.18.391.045.57l-.016.016c-.21.27-.435.495-.689.66-.255.164-.525.284-.811.345-.33.09-.645.104-.975.06-1.095-.135-2.01-.93-2.28-2.01-.06-.21-.09-.42-.09-.645 0-.855.421-1.695 1.125-2.205.885-.615 2.085-.66 3-.075.63.405 1.035 1.021 1.185 1.771.075.419-.21.794-.734.81l.068-.046zm6.129-2.223c-1.064 0-1.931.865-1.931 1.931 0 1.064.866 1.931 1.931 1.931s1.931-.867 1.931-1.931c0-1.065-.866-1.933-1.931-1.933v.002zm0 2.595c-.367 0-.666-.297-.666-.666 0-.367.3-.665.666-.665.367 0 .667.299.667.665 0 .369-.3.667-.667.666zm-8.04-2.603c-.91 0-1.672.623-1.886 1.466v.03h3.776c-.203-.855-.973-1.494-1.891-1.494v-.002z"/></svg><span>Xero</span></div><div class="int" style="--brand:#00D639" title="Sage Intacct"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.702 5.316C1.167 5.316 0 6.48 0 7.972c0 1.635 1.167 2.267 2.46 2.655 1.224.387 1.804.818 1.804 1.666 0 .86-.64 1.465-1.477 1.465-.84 0-1.566-.604-1.566-1.535 0-.516.242-.647.242-.934 0-.33-.227-.574-.599-.574-.423 0-.864.647-.864 1.566 0 1.48 1.266 2.57 2.787 2.57 1.535 0 2.701-1.163 2.701-2.656 0-1.623-1.166-2.267-2.472-2.655-1.209-.372-1.792-.818-1.792-1.666 0-.845.626-1.45 1.463-1.45.867 0 1.565.617 1.577 1.465.016.388.285.617.599.617a.592.592 0 0 0 .61-.647c-.027-1.48-1.263-2.543-2.771-2.543zm6.171 9.52c.683 0 1.21-.23 1.21-.69a.57.57 0 0 0-.557-.574c-.2 0-.341.085-.668.085-.882 0-1.577-.76-1.577-1.65 0-.962.71-1.725 1.608-1.725 1.009 0 1.65.775 1.65 1.895v2.054c0 .36.284.604.625.604.327 0 .61-.244.61-.604v-2.097c0-1.72-1.178-2.984-2.858-2.984-1.566 0-2.86 1.22-2.86 2.856 0 1.58 1.282 2.83 2.817 2.83zm6.257 3.848c1.535 0 2.701-1.163 2.701-2.656 0-1.635-1.166-2.267-2.472-2.655-1.209-.387-1.792-.818-1.792-1.666s.64-1.465 1.463-1.465c.84 0 1.577.604 1.577 1.535 0 .519-.241.647-.241.934 0 .33.226.574.583.574.441 0 .882-.647.882-1.566 0-1.48-1.278-2.57-2.801-2.57-1.535 0-2.687 1.163-2.687 2.656 0 1.623 1.152 2.267 2.46 2.655 1.224.372 1.804.818 1.804 1.666 0 .86-.64 1.45-1.462 1.45-.883 0-1.566-.601-1.578-1.465-.015-.388-.3-.604-.598-.604-.327 0-.626.216-.61.631.011 1.499 1.247 2.546 2.77 2.546zm6.171-3.849c.795 0 1.424-.229 1.862-.503.426-.272.595-.504.595-.76 0-.272-.2-.516-.568-.516-.441 0-.795.66-1.877.66-.952 0-1.707-.76-1.707-1.722 0-.95.725-1.724 1.635-1.724.982 0 1.508.647 1.508 1.062 0 .116-.085.174-.2.174h-1.194c-.326 0-.568.216-.568.503 0 .314.242.546.568.546h1.636c.625 0 1.009-.33 1.009-.89 0-1.408-1.194-2.512-2.774-2.512-1.566 0-2.83 1.263-2.83 2.84s1.312 2.842 2.905 2.842z"/></svg><span>Sage Intacct</span></div><div class="int" style="--brand:#635BFF" title="Stripe"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z"/></svg><span>Stripe</span></div><div class="int" style="--brand:#212121" title="Brex"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.69 2.319a3.868 3.868 0 0 0-3.108 1.547l-.759 1.007a1.658 1.658 0 0 1-1.313.656H0V21.68h5.296a3.87 3.87 0 0 0 3.108-1.547l.759-1.006a1.656 1.656 0 0 1 1.313-.657H24V2.319h-5.31Zm1.108 11.949h-5.66a3.87 3.87 0 0 0-3.108 1.547l-.759 1.007a1.658 1.658 0 0 1-1.313.656H4.202V9.731h5.661a3.868 3.868 0 0 0 3.107-1.547l.759-1.006a1.658 1.658 0 0 1 1.313-.657h4.771l-.015 7.747Z"/></svg><span>Brex</span></div><div class="int" style="--brand:#00A1E0" title="Salesforce"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.006 5.415a4.195 4.195 0 013.045-1.306c1.56 0 2.954.9 3.69 2.205.63-.3 1.35-.45 2.1-.45 2.85 0 5.159 2.34 5.159 5.22s-2.31 5.22-5.176 5.22c-.345 0-.69-.044-1.02-.104a3.75 3.75 0 01-3.3 1.95c-.6 0-1.155-.15-1.65-.375A4.314 4.314 0 018.88 20.4a4.302 4.302 0 01-4.05-2.82c-.27.062-.54.076-.825.076-2.204 0-4.005-1.8-4.005-4.05 0-1.5.811-2.805 2.01-3.51-.255-.57-.39-1.2-.39-1.846 0-2.58 2.1-4.65 4.65-4.65 1.53 0 2.85.705 3.72 1.8"/></svg><span>Salesforce</span></div><div class="int" style="--brand:#FF7A59" title="HubSpot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.164 7.93V5.084a2.198 2.198 0 001.267-1.978v-.067A2.2 2.2 0 0017.238.845h-.067a2.2 2.2 0 00-2.193 2.193v.067a2.196 2.196 0 001.252 1.973l.013.006v2.852a6.22 6.22 0 00-2.969 1.31l.012-.01-7.828-6.095A2.497 2.497 0 104.3 4.656l-.012.006 7.697 5.991a6.176 6.176 0 00-1.038 3.446c0 1.343.425 2.588 1.147 3.607l-.013-.02-2.342 2.343a1.968 1.968 0 00-.58-.095h-.002a2.033 2.033 0 102.033 2.033 1.978 1.978 0 00-.1-.595l.005.014 2.317-2.317a6.247 6.247 0 104.782-11.134l-.036-.005zm-.964 9.378a3.206 3.206 0 113.215-3.207v.002a3.206 3.206 0 01-3.207 3.207z"/></svg><span>HubSpot</span></div><div class="int" style="--brand:#4A154B" title="Slack"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg><span>Slack</span></div><div class="int" style="--brand:#4285F4" title="Google Drive"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.01 1.485c-2.082 0-3.754.02-3.743.047.01.02 1.708 3.001 3.774 6.62l3.76 6.574h3.76c2.081 0 3.753-.02 3.742-.047-.005-.02-1.708-3.001-3.775-6.62l-3.76-6.574zm-4.76 1.73a789.828 789.861 0 0 0-3.63 6.319L0 15.868l1.89 3.298 1.885 3.297 3.62-6.335 3.618-6.33-1.88-3.287C8.1 4.704 7.255 3.22 7.25 3.214zm2.259 12.653-.203.348c-.114.198-.96 1.672-1.88 3.287a423.93 423.948 0 0 1-1.698 2.97c-.01.026 3.24.042 7.222.042h7.244l1.796-3.157c.992-1.734 1.85-3.23 1.906-3.323l.104-.167h-7.249z"/></svg><span>Google Drive</span></div><div class="int" style="--brand:#29B5E8" title="Snowflake"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 3.459c0 .646-.418 1.18-1.141 1.18-.723 0-1.142-.534-1.142-1.18 0-.647.419-1.18 1.142-1.18.723 0 1.141.533 1.141 1.18zm-.228 0c0-.533-.38-.951-.913-.951s-.913.38-.913.95c0 .533.38.952.913.952.57 0 .913-.419.913-.951zm-1.37-.533h.495c.266 0 .456.152.456.38 0 .153-.076.229-.19.305l.19.266v.038h-.266l-.19-.266h-.229v.266h-.266zm.495.228h-.229v.267h.229c.114 0 .152-.038.152-.114.038-.077-.038-.153-.152-.153zM7.602 12.4c.038-.151.076-.304.076-.456 0-.114-.038-.228-.038-.342-.114-.343-.304-.647-.646-.838l-4.87-2.777c-.685-.38-1.56-.152-1.94.533-.381.685-.153 1.56.532 1.94l2.701 1.56-2.701 1.56c-.685.38-.913 1.256-.533 1.94.38.685 1.256.914 1.94.533l4.832-2.777c.343-.267.571-.533.647-.876zm1.332 2.626c-.266-.038-.57.038-.837.19l-4.832 2.777c-.685.38-.913 1.256-.532 1.94.38.686 1.255.914 1.94.533l2.701-1.56v3.12c0 .8.647 1.408 1.446 1.408.799 0 1.407-.647 1.407-1.408v-5.592c0-.761-.57-1.37-1.293-1.408zm4.946-6.088c.266.038.57-.038.837-.19l4.832-2.777c.685-.38.913-1.256.532-1.94-.38-.686-1.255-.914-1.94-.533l-2.701 1.56V1.975c0-.799-.647-1.408-1.446-1.408-.799 0-1.446.609-1.446 1.408V7.53c0 .76.609 1.37 1.332 1.407zM3.265 5.97l4.832 2.777c.266.152.533.19.837.19.723-.038 1.331-.684 1.331-1.407V1.975c0-.799-.646-1.408-1.407-1.408-.799 0-1.446.647-1.446 1.408v3.12l-2.701-1.56c-.685-.38-1.56-.152-1.94.533-.419.646-.19 1.521.494 1.902zm9.093 6.011a.412.412 0 00-.114-.266l-.57-.571a.346.346 0 00-.267-.114.412.412 0 00-.266.114l-.571.57a.411.411 0 00-.114.267c0 .076.038.19.114.267l.57.57a.345.345 0 00.267.114c.076 0 .19-.038.266-.114l.571-.57a.412.412 0 00.114-.267zm1.598.533L11.94 14.53c-.039.038-.153.114-.229.114h-.608a.411.411 0 01-.267-.114L8.82 12.514a.408.408 0 01-.076-.229v-.608c0-.076.038-.19.114-.267l2.016-2.016a.41.41 0 01.267-.114h.608a.41.41 0 01.267.114l2.016 2.016a.347.347 0 01.114.267v.608c-.076.077-.114.19-.19.229zm5.593 5.44l-4.832-2.777c-.266-.152-.57-.19-.837-.152-.723.038-1.332.684-1.332 1.408v5.554c0 .8.647 1.408 1.408 1.408.799 0 1.446-.647 1.446-1.408v-3.12l2.7 1.56c.686.38 1.561.152 1.941-.533.419-.646.19-1.521-.494-1.94zm2.549-7.533l-2.701 1.56 2.7 1.56c.686.38.914 1.256.533 1.94-.38.685-1.255.913-1.94.533l-4.832-2.778a1.644 1.644 0 01-.647-.798c-.037-.153-.076-.305-.076-.457 0-.114.039-.228.039-.342.114-.343.342-.647.646-.837l4.832-2.778c.685-.38 1.56-.152 1.94.533.457.609.19 1.484-.494 1.864"/></svg><span>Snowflake</span></div><div class="int" style="--brand:#F45D48" title="Gusto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.311 8.768c-1.482 0-2.69 1.212-2.69 2.702s1.208 2.701 2.69 2.701c1.483 0 2.689-1.212 2.689-2.701s-1.206-2.702-2.689-2.702Zm0 4.123a1.42 1.42 0 0 1-1.415-1.421 1.42 1.42 0 0 1 1.415-1.422c.78 0 1.415.638 1.415 1.422s-.635 1.42-1.415 1.42Zm-7.919-1.969-.47-.235c-.204-.102-.332-.18-.384-.239a.283.283 0 0 1-.078-.19c0-.091.04-.168.122-.228.08-.063.193-.091.338-.091.264 0 .556.16.878.48l.794-.797a2.09 2.09 0 0 0-.744-.63 2.06 2.06 0 0 0-.937-.22c-.484 0-.884.143-1.196.431a1.367 1.367 0 0 0-.468 1.04c0 .63.412 1.154 1.24 1.57l.433.218c.373.189.559.381.559.58 0 .108-.052.201-.155.284a.63.63 0 0 1-.409.122c-.156 0-.336-.054-.538-.163a1.81 1.81 0 0 1-.528-.427l-.79.864c.446.584 1.04.878 1.786.878.561 0 1.009-.153 1.34-.458.335-.304.502-.685.502-1.141 0-.342-.093-.642-.277-.897-.185-.255-.525-.504-1.018-.75Zm-7.985 2.66V8.876H4.131v.316a2.662 2.662 0 0 0-1.442-.423C1.206 8.768 0 9.98 0 11.47s1.206 2.701 2.689 2.701c.505 0 1-.142 1.427-.412l-.002.104a1.42 1.42 0 0 1-1.415 1.42c-.265 0-.524-.075-.748-.217l-.631 1.11c.416.255.894.39 1.382.39a2.713 2.713 0 0 0 2.705-2.702c0-.057.004-.227 0-.281ZM2.69 12.89a1.42 1.42 0 0 1-1.415-1.42c0-.784.636-1.422 1.415-1.422s1.415.638 1.415 1.422a1.42 1.42 0 0 1-1.415 1.42Zm7.803-4.016H9.21v2.568c.002.365.002.995-.265 1.264-.128.128-.269.245-.563.245a.707.707 0 0 1-.565-.245c-.269-.27-.266-.901-.265-1.264V8.874H6.27v2.56c-.004.528-.01 1.509.633 2.16.377.38.827.575 1.476.575.65 0 1.1-.193 1.477-.576.643-.65.637-1.633.633-2.159l.004-2.56Zm7.27 3.787c-.104.078-.353.253-.636.213-.23-.03-.418-.2-.447-.768v-2.13h1.507V8.87H16.68V7.434H15.4v.281h-.002v4.223c0 .671.17 2.231 1.726 2.231.788-.012 1.266-.441 1.467-.609l.026-.02-.767-.95a4.174 4.174 0 0 1-.089.07Z"/></svg><span>Gusto</span></div><div class="int" style="--brand:#000000" title="Notion"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/></svg><span>Notion</span></div><div class="int" style="--brand:#34A853" title="Google Sheets"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.318 12.545H7.91v-1.909h3.41v1.91zM14.728 0v6h6l-6-6zm1.363 10.636h-3.41v1.91h3.41v-1.91zm0 3.273h-3.41v1.91h3.41v-1.91zM20.727 6.5v15.864c0 .904-.732 1.636-1.636 1.636H4.909a1.636 1.636 0 0 1-1.636-1.636V1.636C3.273.732 4.005 0 4.909 0h9.318v6.5h6.5zm-3.273 2.773H6.545v7.909h10.91v-7.91zm-6.136 4.636H7.91v1.91h3.41v-1.91z"/></svg><span>Google Sheets</span></div><div class="int int-more"><b>+25</b><span>more</span></div></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing section" id="pricing">
+  <div class="container">
+    <header class="section-head center">
+      <h2 class="h2">Simple pricing.<br><span class="dim">Pays for itself in a month.</span></h2>
+      <div class="billing" role="group" aria-label="Billing period">
+        <button class="is-active" data-bill="annual">Annual <em>−20%</em></button>
+        <button data-bill="monthly">Monthly</button>
+      </div>
+    </header>
 
     <div class="plans">
       <div class="plan-card">
         <p class="plan-name">Team</p>
-        <p class="plan-price">$1,200<small>/mo</small></p>
-        <p class="plan-desc">For lean teams up to $50M revenue.</p>
-        <ul><li>Reconcile &amp; Collect</li><li>5 integrations</li><li>Email support</li></ul>
-        <a class="btn btn-line" href="#demo">Start a pilot</a>
+        <p class="plan-price"><span data-annual="$960" data-monthly="$1,200">$960</span><small>/mo</small></p>
+        <p class="plan-desc">For lean teams under $50M in revenue.</p>
+        <a class="btn btn-line btn-block" href="#demo">Start a pilot</a>
+        <ul>
+          <li>Reconcile and Collect agents</li>
+          <li>1 entity</li>
+          <li>Up to 5,000 transactions a month</li>
+          <li>5 integrations</li>
+          <li>3 seats</li>
+          <li>Email support</li>
+        </ul>
       </div>
       <div class="plan-card plan-hl">
-        <p class="plan-name">Scale <span class="chip chip-neon">Most picked</span></p>
-        <p class="plan-price">$3,800<small>/mo</small></p>
+        <p class="plan-name">Scale <span class="tag">Most picked</span></p>
+        <p class="plan-price"><span data-annual="$3,040" data-monthly="$3,800">$3,040</span><small>/mo</small></p>
         <p class="plan-desc">For growing teams that close every month.</p>
-        <ul><li>All four agents</li><li>Unlimited integrations</li><li>Dedicated close expert</li></ul>
-        <a class="btn btn-neon" href="#demo">Book a demo</a>
+        <a class="btn btn-neon btn-block" href="#demo">Book a demo</a>
+        <ul>
+          <li><b>Everything in Team, plus:</b></li>
+          <li>All four agents</li>
+          <li>Up to 5 entities</li>
+          <li>Up to 50,000 transactions a month</li>
+          <li>Unlimited integrations and seats</li>
+          <li>Approval rules by amount and account</li>
+          <li>A dedicated close expert</li>
+          <li>Slack support, 4-hour reply</li>
+        </ul>
       </div>
       <div class="plan-card">
         <p class="plan-name">Enterprise</p>
         <p class="plan-price">Custom</p>
         <p class="plan-desc">For multi-entity and public companies.</p>
-        <ul><li>SOX controls pack</li><li>SSO, SCIM &amp; data residency</li><li>99.9% uptime SLA</li></ul>
-        <a class="btn btn-line" href="#demo">Talk to sales</a>
+        <a class="btn btn-line btn-block" href="#demo">Talk to sales</a>
+        <ul>
+          <li><b>Everything in Scale, plus:</b></li>
+          <li>Unlimited entities and volume</li>
+          <li>SOX control pack</li>
+          <li>SSO and SCIM</li>
+          <li>EU or US data residency</li>
+          <li>Custom agents for your workflows</li>
+          <li>99.9% uptime SLA</li>
+          <li>On-site onboarding</li>
+        </ul>
       </div>
     </div>
+    <p class="plans-note">Every plan starts with a <b>free 30-day pilot on your own data</b>.</p>
   </div>
 </section>
 
-<!-- ───────────── 06 CTA ───────────── -->
-<section class="cta" id="demo" data-section="demo">
+<!-- CTA -->
+<section class="cta" id="demo">
   <canvas class="cta-field" id="cta-field" aria-hidden="true"></canvas>
   <div class="cta-inner">
-    <p class="eyebrow eyebrow-dark"><span class="eyebrow-num">06</span> Get started</p>
-    <h2 class="cta-title">Close your next month<br>with Vael.</h2>
-    <p class="cta-sub">Book a 30-minute demo. We run Vael on <b>your own data</b>. You see results before you sign.</p>
-    <form class="cta-form" onsubmit="event.preventDefault(); this.classList.add('sent');">
+    <div class="vael vael-lg" data-state="idle" aria-hidden="true">
+      <span class="vael-ring"></span><span class="vael-body"></span><span class="vael-eyes"><i></i><i></i></span>
+    </div>
+    <h2 class="cta-title">Close next month<br>with Vael.</h2>
+    <p class="cta-sub">We run Vael on <b>your own data</b>. You see results before you sign.</p>
+    <form class="cta-form" id="cta-form">
       <input type="email" required placeholder="you@company.com" aria-label="Work email">
       <button class="btn btn-neon" type="submit"><span class="send-txt">Book a demo</span><span class="sent-txt">✓ We'll be in touch</span></button>
     </form>
-    <p class="cta-fine">Free 30-day pilot · No card · Cancel any time</p>
   </div>
 </section>
 
 </main>
 
-<!-- ───────────── FOOTER ───────────── -->
 <footer class="footer">
   <div class="container">
     <div class="foot-top">
-      <div class="foot-brand">
-        <a class="brand" href="#top"><svg class="brand-mark"><use href="#mark"/></svg><span class="brand-word">vael</span></a>
-        <p>The finance agent that closes your books.</p>
-        <p class="status"><span class="live-dot"></span> All systems normal</p>
-      </div>
+      <a class="brand" href="#top"><svg class="brand-mark"><use href="#mark"/></svg><span class="brand-word">vael</span></a>
       <div class="foot-cols">
-        <div><p>Product</p><a href="#">Reconcile</a><a href="#">Close</a><a href="#">Collect</a><a href="#">Audit</a></div>
-        <div><p>Company</p><a href="#">About</a><a href="#">Careers</a><a href="#">Customers</a><a href="#">Press</a></div>
-        <div><p>Resources</p><a href="#">Docs</a><a href="#">Trust center</a><a href="#">Close playbook</a><a href="#">Changelog</a></div>
-        <div><p>Legal</p><a href="#">Terms</a><a href="#">Privacy</a><a href="#">DPA</a><a href="#">Security</a></div>
+        <div><p>Product</p><a href="#capabilities">Agents</a><a href="#integrations">Integrations</a><a href="#pricing">Pricing</a></div>
+        <div><p>Company</p><a href="#">About</a><a href="#">Careers</a><a href="#customers">Customers</a></div>
+        <div><p>Legal</p><a href="#">Terms</a><a href="#">Privacy</a><a href="#security">Security</a></div>
       </div>
     </div>
     <div class="foot-word" aria-hidden="true">vael</div>
     <div class="foot-bottom">
       <span>© 2026 Vael Labs, Inc.</span>
-      <span class="concept-note">Design concept. Vael, its customers, people and figures are fictional.</span>
+      <span>Design concept. Vael, its customers and figures are fictional.</span>
     </div>
   </div>
 </footer>
