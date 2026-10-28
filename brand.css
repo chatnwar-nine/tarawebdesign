@@ -241,14 +241,14 @@
 .bg-foot a:hover { color: var(--neon); }
 
 /* ─── Responsive ─── */
-@media (max-width: 980px) {
+@media screen and (max-width: 980px) {
   .bg-bar { gap: 16px; padding: 0 16px; }
   .bg-grid-2, .bg-imgs { grid-template-columns: 1fr; }
   .bg-grid-3, .bg-swatches, .bg-donts, .bg-apps { grid-template-columns: 1fr 1fr; }
   .bg-traits, .bg-states { grid-template-columns: 1fr 1fr; }
   .bg-swatches-sm, .bg-assets { grid-template-columns: repeat(3, 1fr); }
 }
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .bg-bar .brand-word { display: none; }
   .bg-cover { margin: 0 8px; border-radius: 28px; }
   .bg-ch { padding: 100px 16px 0; }
@@ -269,4 +269,24 @@
   .bg-img-orb canvas { width: 320px; height: 320px; }
   .bg-specs dl div { flex-direction: column; gap: 2px; }
   .bg-specs dd { text-align: left; }
+}
+
+/* ─── Print / PDF: one chapter starts each page ─── */
+@page { size: 1440px 1018px; margin: 0; }
+@media print {
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .bg-bar, .bg-foot { display: none; }
+  .bg-cover { height: 1018px; min-height: 0; margin: 0; border-radius: 0; break-after: page; }
+  .bg-ch { padding: 56px 96px 24px; max-width: none; break-before: page; }
+  .bg-ch:last-of-type { padding-bottom: 24px; }
+  .bg-head { margin-bottom: 32px; }
+  .bg-sub { margin-top: 44px; break-after: avoid; }
+  .bg-card, .bg-logo, .bg-donts > div, .bg-states > div, .sw, .bg-img, .bg-app, .bg-traits div, .bg-scale > div, .bg-specs dl, .bg-grid-2, .bg-grid-3, .bg-swatches, .bg-states, .bg-donts, .bg-rewrite tr { break-inside: avoid; }
+  .bg-tall { min-height: 400px; }
+  .bg-img { height: 260px; }
+  .bg-img-orb canvas { width: 230px; height: 230px; top: 42%; }
+  .bg-donts > div { height: 250px; }
+  .bg-app { min-height: 400px; }
+  .bg-break { break-before: page; padding-top: 56px; margin-top: 0; }
+  .vael-body { animation: none; }
 }
